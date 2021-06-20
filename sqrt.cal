@@ -1,0 +1,35 @@
+method mod(n, d){
+	out = 0;
+	while {out < n}{
+		out = out + d
+	};
+	output out - n
+};
+method estimate(n, max_iter){
+	iter = 0;
+	low = 0;
+	high = n;
+	while {iter < max_iter}{
+		mid = (low + high) / 2;
+		sqr = mid * mid;
+		if {sqr > n}{
+			high = mid
+		}
+		elif {sqr < n}{
+			low = mid
+		};
+		iter = iter + 1
+	};
+	output mid
+};
+method sqrt(n, max_iter){
+	iter = 0;
+	esti = estimate(n, (max_iter / 4) + mod(max_iter / 4));
+	max_iter = (max_iter * 3 / 4) + mod(max_iter * 3 / 4, 1);
+	while {iter < max_iter}{
+		esti = (esti + n / esti) / 2;
+		iter = iter + 1
+	};
+	output esti
+};
+print(sqrt(2, 10))

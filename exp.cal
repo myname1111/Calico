@@ -1,0 +1,27 @@
+method mod(n, d){
+	out = 0;
+	while {out < n}{
+		out = out + d
+	};
+	output out - n
+};
+method exp(n, p){
+	if {p == 0}{
+		output 1
+	}
+	elif {p > 0}{
+		m = mod(p, 2);
+		if {m == 0}{
+			output exp(n * n, p / 2)
+		}
+		elif {m == 1}{
+			output exp(n * n, (p - 1) / 2) * n
+		}
+	}
+};
+iter = 0;
+while {iter < 10}{
+	print(exp(1.1, 100));
+	iter = iter + 1
+};
+input("")

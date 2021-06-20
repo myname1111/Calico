@@ -1,0 +1,44 @@
+method mod(n, d){
+	out = 0;
+	while {out < n}{
+		out = out + d
+	};
+	output out - n
+};
+method exp(n, p){
+	if {p == 0}{
+		output 1
+	}
+	elif {p > 0}{
+		m = mod(p, 2);
+		if {m == 0}{
+			output exp(n * n, p / 2)
+		}
+		elif {m == 1}{
+			output exp(n * n, (p - 1) / 2) * n
+		}
+	}
+};
+method pi(lim){
+	out = 0;
+	k = 0;
+	while {k < (lim + 1)}{
+		out = out + (
+		4 / (8 * k + 1) -
+		2 / (8 * k + 4) -
+		1 / (8 * k + 5) -
+		1 / (8 * k + 6)) /
+		exp(16, k);
+		k = k +  1
+	};
+	output out
+};
+iter = 0;
+prec = int(input("digits: "));
+max_iter = int(input("iter: "));
+set_prec(prec);
+while {iter < max_iter}{
+	print(pi(iter));
+	iter = iter + 1
+}; 
+input("press any key to quit")

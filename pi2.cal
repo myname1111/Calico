@@ -1,0 +1,95 @@
+method fact(n){
+    if {n == 0}{
+        output 1
+    }
+    elif {n > 0}{
+        output n * fact(n - 1)
+    }
+};
+method mod(n, d){
+	out = 0;
+	while {out < n}{
+		out = out + d
+	};
+	output out - n
+};
+method estimate(n, max_iter){
+	iter = 0;
+	low = 0;
+	high = n;
+	while {iter < max_iter}{
+		mid = (low + high) / 2;
+		sqr = mid * mid;
+		if {sqr > n}{
+			high = mid
+		}
+		elif {sqr < n}{
+			low = mid
+		};
+		iter = iter + 1
+	};
+	output mid
+};
+method sqrt(n, max_iter){
+	iter = 0;
+	esti = estimate(n, (max_iter / 4) + mod(max_iter / 4));
+	max_iter = (max_iter * 3 / 4) + mod(max_iter * 3 / 4, 1);
+	while {iter < max_iter}{
+		esti = (esti + n / esti) / 2;
+		iter = iter + 1
+	};
+	output esti
+};
+method exp(n, p){
+	if {p == 0}{
+		output 1
+	}
+	elif {p > 0}{
+		m = mod(p, 2);
+		if {m == 0}{
+			output exp(n * n, p / 2)
+		}
+		elif {m == 1}{
+			output exp(n * n, (p - 1) / 2) * n
+		}
+	}
+};
+method den(k){
+	iter = 0;
+	out = 0;
+	while {iter < k}{
+		a = fact(6 * iter) * (545140134 * iter + 13591409);
+		b = fact(3 * iter)*(exp(fact(iter), 3)) * (exp(-262537412640768000, iter));
+		res = a / b;
+		out = out + res;
+		iter = iter + 1;
+	};
+	output den
+};
+method num(prec){
+	p = get_prec();
+	set_prec(prec);
+	d = sqrt(10005, prec);
+	set_prec(p);
+	output 426880 * sqrt(10005, prec)
+};
+method chudnovsky(k, prec){
+	numtr = num(prec);
+	dentr = 0;
+	iter = 0;
+	while {iter < k}{
+		a = fact(6 * iter) * (545140134 * iter + 13591409);
+		b = fact(3 * iter)*(exp(fact(iter), 3)) * (exp(-262537412640768000, iter));
+		res = a / b;
+		dentr = dentr + res;
+		print(numtr  / dentr);
+		iter = iter + 1
+	};
+	output (numtr / dentr)
+};
+prec = int(input("digits: "));
+iter = int(input("iter: "));
+set_prec(prec);
+pi_estimate = chudnovsky(iter, prec);
+iter = iter + 1;
+input("press any key to quit")

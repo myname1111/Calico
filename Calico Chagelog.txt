@@ -1,0 +1,34 @@
+Calico V 0.2.1:
+    -fix multi call bug
+    -fix rounding error
+    -fix bug with recursion
+    -build using cx_freeze instead of pyinstaller
+Calico V 0.2:
+    -Added compare
+    -Added bools
+    -Added if else elif
+    -Added func def
+    -differentiate from pythons
+    -OPTIMIZE
+    -Added while loop
+Calico V 0.1:
+    -The birth of Calico
+    -Added Simple arithmetic
+    -Added Tuple
+    -Added function call
+    -Added Print input builtins
+    -Added support multi-line output
+    -Added strings
+
+TODO:
+    -add for
+    -add tuple getitem
+    -add string getitem
+    -add string oper
+    -add class
+    -add try
+    -add str builtins
+    -add exp oper
+    -add sqrt oper
+    -add include
+    -

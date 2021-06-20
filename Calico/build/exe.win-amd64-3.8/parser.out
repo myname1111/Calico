@@ -1,0 +1,2932 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    DSLASH
+    ELSE
+
+Grammar
+
+Rule 0     S' -> calc
+Rule 1     calc -> calc NEWLINE calc
+Rule 2     call -> NAME tuple
+Rule 3     calc -> if
+Rule 4     calc -> expression
+Rule 5     calc -> var_assign
+Rule 6     calc -> data
+Rule 7     calc -> empty
+Rule 8     calc -> while
+Rule 9     calc -> method
+Rule 10    calc -> output
+Rule 11    calc -> comment
+Rule 12    if -> IF RBRAC calc LBRAC RBRAC calc LBRAC elif
+Rule 13    var_assign -> NAME EQUALS expression
+Rule 14    var_assign -> NAME EQUALS data
+Rule 15    if -> IF RBRAC calc LBRAC RBRAC calc LBRAC
+Rule 16    expression -> MINUS expression
+Rule 17    expression -> expression MULTIPLY expression
+Rule 18    expression -> expression DIVIDE expression
+Rule 19    expression -> expression PLUS expression
+Rule 20    expression -> expression MINUS expression
+Rule 21    expression -> expression MORE expression
+Rule 22    expression -> expression LESS expression
+Rule 23    expression -> expression MOEQ expression
+Rule 24    expression -> expression LEEQ expression
+Rule 25    expression -> expression DEQUALS expression
+Rule 26    expression -> INT
+Rule 27    expression -> FLOAT
+Rule 28    expression -> call
+Rule 29    expression -> TRUE
+Rule 30    expression -> FALSE
+Rule 31    expression -> PAL expression PAR
+Rule 32    expression -> NAME
+Rule 33    data -> data COMMA data
+Rule 34    data -> string
+Rule 35    data -> INT
+Rule 36    data -> FLOAT
+Rule 37    data -> tuple
+Rule 38    data -> expression
+Rule 39    data -> empty
+Rule 40    string -> STRING
+Rule 41    tuple -> PAL data PAR
+Rule 42    while -> WHILE RBRAC expression LBRAC RBRAC calc LBRAC
+Rule 43    output -> OUTPUT expression
+Rule 44    method -> METHOD NAME tuple RBRAC calc LBRAC
+Rule 45    elif -> ELIF RBRAC calc LBRAC RBRAC calc LBRAC
+Rule 46    elif -> ELIF RBRAC calc LBRAC RBRAC calc LBRAC elif
+Rule 47    empty -> none
+Rule 48    empty -> comment
+Rule 49    none -> <empty>
+Rule 50    comment -> COMMENT
+
+Terminals, with rules where they appear
+
+COMMA                : 33
+COMMENT              : 50
+DEQUALS              : 25
+DIVIDE               : 18
+DSLASH               : 
+ELIF                 : 45 46
+ELSE                 : 
+EQUALS               : 13 14
+FALSE                : 30
+FLOAT                : 27 36
+IF                   : 12 15
+INT                  : 26 35
+LBRAC                : 12 12 15 15 42 42 44 45 45 46 46
+LEEQ                 : 24
+LESS                 : 22
+METHOD               : 44
+MINUS                : 16 20
+MOEQ                 : 23
+MORE                 : 21
+MULTIPLY             : 17
+NAME                 : 2 13 14 32 44
+NEWLINE              : 1
+OUTPUT               : 43
+PAL                  : 31 41
+PAR                  : 31 41
+PLUS                 : 19
+RBRAC                : 12 12 15 15 42 42 44 45 45 46 46
+STRING               : 40
+TRUE                 : 29
+WHILE                : 42
+error                : 
+
+Nonterminals, with rules where they appear
+
+calc                 : 1 1 12 12 15 15 42 44 45 45 46 46 0
+call                 : 28
+comment              : 11 48
+data                 : 6 14 33 33 41
+elif                 : 12 46
+empty                : 7 39
+expression           : 4 13 16 17 17 18 18 19 19 20 20 21 21 22 22 23 23 24 24 25 25 31 38 42 43
+if                   : 3
+method               : 9
+none                 : 47
+output               : 10
+string               : 34
+tuple                : 2 37 44
+var_assign           : 5
+while                : 8
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . calc
+    (1) calc -> . calc NEWLINE calc
+    (3) calc -> . if
+    (4) calc -> . expression
+    (5) calc -> . var_assign
+    (6) calc -> . data
+    (7) calc -> . empty
+    (8) calc -> . while
+    (9) calc -> . method
+    (10) calc -> . output
+    (11) calc -> . comment
+    (12) if -> . IF RBRAC calc LBRAC RBRAC calc LBRAC elif
+    (15) if -> . IF RBRAC calc LBRAC RBRAC calc LBRAC
+    (16) expression -> . MINUS expression
+    (17) expression -> . expression MULTIPLY expression
+    (18) expression -> . expression DIVIDE expression
+    (19) expression -> . expression PLUS expression
+    (20) expression -> . expression MINUS expression
+    (21) expression -> . expression MORE expression
+    (22) expression -> . expression LESS expression
+    (23) expression -> . expression MOEQ expression
+    (24) expression -> . expression LEEQ expression
+    (25) expression -> . expression DEQUALS expression
+    (26) expression -> . INT
+    (27) expression -> . FLOAT
+    (28) expression -> . call
+    (29) expression -> . TRUE
+    (30) expression -> . FALSE
+    (31) expression -> . PAL expression PAR
+    (32) expression -> . NAME
+    (13) var_assign -> . NAME EQUALS expression
+    (14) var_assign -> . NAME EQUALS data
+    (33) data -> . data COMMA data
+    (34) data -> . string
+    (35) data -> . INT
+    (36) data -> . FLOAT
+    (37) data -> . tuple
+    (38) data -> . expression
+    (39) data -> . empty
+    (47) empty -> . none
+    (48) empty -> . comment
+    (42) while -> . WHILE RBRAC expression LBRAC RBRAC calc LBRAC
+    (44) method -> . METHOD NAME tuple RBRAC calc LBRAC
+    (43) output -> . OUTPUT expression
+    (50) comment -> . COMMENT
+    (2) call -> . NAME tuple
+    (40) string -> . STRING
+    (41) tuple -> . PAL data PAR
+    (49) none -> .
+
+    IF              shift and go to state 11
+    MINUS           shift and go to state 12
+    INT             shift and go to state 13
+    FLOAT           shift and go to state 14
+    TRUE            shift and go to state 16
+    FALSE           shift and go to state 17
+    PAL             shift and go to state 18
+    NAME            shift and go to state 19
+    WHILE           shift and go to state 23
+    METHOD          shift and go to state 24
+    OUTPUT          shift and go to state 25
+    COMMENT         shift and go to state 26
+    STRING          shift and go to state 27
+    NEWLINE         reduce using rule 49 (none -> .)
+    $end            reduce using rule 49 (none -> .)
+    COMMA           reduce using rule 49 (none -> .)
+
+    calc                           shift and go to state 1
+    if                             shift and go to state 2
+    expression                     shift and go to state 3
+    var_assign                     shift and go to state 4
+    data                           shift and go to state 5
+    empty                          shift and go to state 6
+    while                          shift and go to state 7
+    method                         shift and go to state 8
+    output                         shift and go to state 9
+    comment                        shift and go to state 10
+    call                           shift and go to state 15
+    string                         shift and go to state 20
+    tuple                          shift and go to state 21
+    none                           shift and go to state 22
+
+state 1
+
+    (0) S' -> calc .
+    (1) calc -> calc . NEWLINE calc
+
+    NEWLINE         shift and go to state 28
+
+
+state 2
+
+    (3) calc -> if .
+
+    NEWLINE         reduce using rule 3 (calc -> if .)
+    $end            reduce using rule 3 (calc -> if .)
+    LBRAC           reduce using rule 3 (calc -> if .)
+
+
+state 3
+
+    (4) calc -> expression .
+    (17) expression -> expression . MULTIPLY expression
+    (18) expression -> expression . DIVIDE expression
+    (19) expression -> expression . PLUS expression
+    (20) expression -> expression . MINUS expression
+    (21) expression -> expression . MORE expression
+    (22) expression -> expression . LESS expression
+    (23) expression -> expression . MOEQ expression
+    (24) expression -> expression . LEEQ expression
+    (25) expression -> expression . DEQUALS expression
+    (38) data -> expression .
+
+  ! reduce/reduce conflict for NEWLINE resolved using rule 4 (calc -> expression .)
+  ! reduce/reduce conflict for $end resolved using rule 4 (calc -> expression .)
+  ! reduce/reduce conflict for LBRAC resolved using rule 4 (calc -> expression .)
+    NEWLINE         reduce using rule 4 (calc -> expression .)
+    $end            reduce using rule 4 (calc -> expression .)
+    LBRAC           reduce using rule 4 (calc -> expression .)
+    MULTIPLY        shift and go to state 29
+    DIVIDE          shift and go to state 30
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    MORE            shift and go to state 33
+    LESS            shift and go to state 34
+    MOEQ            shift and go to state 35
+    LEEQ            shift and go to state 36
+    DEQUALS         shift and go to state 37
+    COMMA           reduce using rule 38 (data -> expression .)
+
+  ! NEWLINE         [ reduce using rule 38 (data -> expression .) ]
+  ! $end            [ reduce using rule 38 (data -> expression .) ]
+  ! LBRAC           [ reduce using rule 38 (data -> expression .) ]
+
+
+state 4
+
+    (5) calc -> var_assign .
+
+    NEWLINE         reduce using rule 5 (calc -> var_assign .)
+    $end            reduce using rule 5 (calc -> var_assign .)
+    LBRAC           reduce using rule 5 (calc -> var_assign .)
+
+
+state 5
+
+    (6) calc -> data .
+    (33) data -> data . COMMA data
+
+    NEWLINE         reduce using rule 6 (calc -> data .)
+    $end            reduce using rule 6 (calc -> data .)
+    LBRAC           reduce using rule 6 (calc -> data .)
+    COMMA           shift and go to state 38
+
+
+state 6
+
+    (7) calc -> empty .
+    (39) data -> empty .
+
+  ! reduce/reduce conflict for NEWLINE resolved using rule 7 (calc -> empty .)
+  ! reduce/reduce conflict for $end resolved using rule 7 (calc -> empty .)
+  ! reduce/reduce conflict for LBRAC resolved using rule 7 (calc -> empty .)
+    NEWLINE         reduce using rule 7 (calc -> empty .)
+    $end            reduce using rule 7 (calc -> empty .)
+    LBRAC           reduce using rule 7 (calc -> empty .)
+    COMMA           reduce using rule 39 (data -> empty .)
+
+  ! NEWLINE         [ reduce using rule 39 (data -> empty .) ]
+  ! $end            [ reduce using rule 39 (data -> empty .) ]
+  ! LBRAC           [ reduce using rule 39 (data -> empty .) ]
+
+
+state 7
+
+    (8) calc -> while .
+
+    NEWLINE         reduce using rule 8 (calc -> while .)
+    $end            reduce using rule 8 (calc -> while .)
+    LBRAC           reduce using rule 8 (calc -> while .)
+
+
+state 8
+
+    (9) calc -> method .
+
+    NEWLINE         reduce using rule 9 (calc -> method .)
+    $end            reduce using rule 9 (calc -> method .)
+    LBRAC           reduce using rule 9 (calc -> method .)
+
+
+state 9
+
+    (10) calc -> output .
+
+    NEWLINE         reduce using rule 10 (calc -> output .)
+    $end            reduce using rule 10 (calc -> output .)
+    LBRAC           reduce using rule 10 (calc -> output .)
+
+
+state 10
+
+    (11) calc -> comment .
+    (48) empty -> comment .
+
+  ! reduce/reduce conflict for NEWLINE resolved using rule 11 (calc -> comment .)
+  ! reduce/reduce conflict for $end resolved using rule 11 (calc -> comment .)
+  ! reduce/reduce conflict for LBRAC resolved using rule 11 (calc -> comment .)
+    NEWLINE         reduce using rule 11 (calc -> comment .)
+    $end            reduce using rule 11 (calc -> comment .)
+    LBRAC           reduce using rule 11 (calc -> comment .)
+    COMMA           reduce using rule 48 (empty -> comment .)
+
+  ! NEWLINE         [ reduce using rule 48 (empty -> comment .) ]
+  ! $end            [ reduce using rule 48 (empty -> comment .) ]
+  ! LBRAC           [ reduce using rule 48 (empty -> comment .) ]
+
+
+state 11
+
+    (12) if -> IF . RBRAC calc LBRAC RBRAC calc LBRAC elif
+    (15) if -> IF . RBRAC calc LBRAC RBRAC calc LBRAC
+
+    RBRAC           shift and go to state 39
+
+
+state 12
+
+    (16) expression -> MINUS . expression
+    (16) expression -> . MINUS expression
+    (17) expression -> . expression MULTIPLY expression
+    (18) expression -> . expression DIVIDE expression
+    (19) expression -> . expression PLUS expression
+    (20) expression -> . expression MINUS expression
+    (21) expression -> . expression MORE expression
+    (22) expression -> . expression LESS expression
+    (23) expression -> . expression MOEQ expression
+    (24) expression -> . expression LEEQ expression
+    (25) expression -> . expression DEQUALS expression
+    (26) expression -> . INT
+    (27) expression -> . FLOAT
+    (28) expression -> . call
+    (29) expression -> . TRUE
+    (30) expression -> . FALSE
+    (31) expression -> . PAL expression PAR
+    (32) expression -> . NAME
+    (2) call -> . NAME tuple
+
+    MINUS           shift and go to state 12
+    INT             shift and go to state 41
+    FLOAT           shift and go to state 42
+    TRUE            shift and go to state 16
+    FALSE           shift and go to state 17
+    PAL             shift and go to state 43
+    NAME            shift and go to state 44
+
+    expression                     shift and go to state 40
+    call                           shift and go to state 15
+
+state 13
+
+    (26) expression -> INT .
+    (35) data -> INT .
+
+  ! reduce/reduce conflict for COMMA resolved using rule 26 (expression -> INT .)
+  ! reduce/reduce conflict for NEWLINE resolved using rule 26 (expression -> INT .)
+  ! reduce/reduce conflict for $end resolved using rule 26 (expression -> INT .)
+  ! reduce/reduce conflict for PAR resolved using rule 26 (expression -> INT .)
+  ! reduce/reduce conflict for LBRAC resolved using rule 26 (expression -> INT .)
+    MULTIPLY        reduce using rule 26 (expression -> INT .)
+    DIVIDE          reduce using rule 26 (expression -> INT .)
+    PLUS            reduce using rule 26 (expression -> INT .)
+    MINUS           reduce using rule 26 (expression -> INT .)
+    MORE            reduce using rule 26 (expression -> INT .)
+    LESS            reduce using rule 26 (expression -> INT .)
+    MOEQ            reduce using rule 26 (expression -> INT .)
+    LEEQ            reduce using rule 26 (expression -> INT .)
+    DEQUALS         reduce using rule 26 (expression -> INT .)
+    NEWLINE         reduce using rule 26 (expression -> INT .)
+    $end            reduce using rule 26 (expression -> INT .)
+    COMMA           reduce using rule 26 (expression -> INT .)
+    PAR             reduce using rule 26 (expression -> INT .)
+    LBRAC           reduce using rule 26 (expression -> INT .)
+
+  ! COMMA           [ reduce using rule 35 (data -> INT .) ]
+  ! NEWLINE         [ reduce using rule 35 (data -> INT .) ]
+  ! $end            [ reduce using rule 35 (data -> INT .) ]
+  ! PAR             [ reduce using rule 35 (data -> INT .) ]
+  ! LBRAC           [ reduce using rule 35 (data -> INT .) ]
+
+
+state 14
+
+    (27) expression -> FLOAT .
+    (36) data -> FLOAT .
+
+  ! reduce/reduce conflict for COMMA resolved using rule 27 (expression -> FLOAT .)
+  ! reduce/reduce conflict for NEWLINE resolved using rule 27 (expression -> FLOAT .)
+  ! reduce/reduce conflict for $end resolved using rule 27 (expression -> FLOAT .)
+  ! reduce/reduce conflict for PAR resolved using rule 27 (expression -> FLOAT .)
+  ! reduce/reduce conflict for LBRAC resolved using rule 27 (expression -> FLOAT .)
+    MULTIPLY        reduce using rule 27 (expression -> FLOAT .)
+    DIVIDE          reduce using rule 27 (expression -> FLOAT .)
+    PLUS            reduce using rule 27 (expression -> FLOAT .)
+    MINUS           reduce using rule 27 (expression -> FLOAT .)
+    MORE            reduce using rule 27 (expression -> FLOAT .)
+    LESS            reduce using rule 27 (expression -> FLOAT .)
+    MOEQ            reduce using rule 27 (expression -> FLOAT .)
+    LEEQ            reduce using rule 27 (expression -> FLOAT .)
+    DEQUALS         reduce using rule 27 (expression -> FLOAT .)
+    NEWLINE         reduce using rule 27 (expression -> FLOAT .)
+    $end            reduce using rule 27 (expression -> FLOAT .)
+    COMMA           reduce using rule 27 (expression -> FLOAT .)
+    PAR             reduce using rule 27 (expression -> FLOAT .)
+    LBRAC           reduce using rule 27 (expression -> FLOAT .)
+
+  ! COMMA           [ reduce using rule 36 (data -> FLOAT .) ]
+  ! NEWLINE         [ reduce using rule 36 (data -> FLOAT .) ]
+  ! $end            [ reduce using rule 36 (data -> FLOAT .) ]
+  ! PAR             [ reduce using rule 36 (data -> FLOAT .) ]
+  ! LBRAC           [ reduce using rule 36 (data -> FLOAT .) ]
+
+
+state 15
+
+    (28) expression -> call .
+
+    MULTIPLY        reduce using rule 28 (expression -> call .)
+    DIVIDE          reduce using rule 28 (expression -> call .)
+    PLUS            reduce using rule 28 (expression -> call .)
+    MINUS           reduce using rule 28 (expression -> call .)
+    MORE            reduce using rule 28 (expression -> call .)
+    LESS            reduce using rule 28 (expression -> call .)
+    MOEQ            reduce using rule 28 (expression -> call .)
+    LEEQ            reduce using rule 28 (expression -> call .)
+    DEQUALS         reduce using rule 28 (expression -> call .)
+    NEWLINE         reduce using rule 28 (expression -> call .)
+    $end            reduce using rule 28 (expression -> call .)
+    COMMA           reduce using rule 28 (expression -> call .)
+    PAR             reduce using rule 28 (expression -> call .)
+    LBRAC           reduce using rule 28 (expression -> call .)
+
+
+state 16
+
+    (29) expression -> TRUE .
+
+    MULTIPLY        reduce using rule 29 (expression -> TRUE .)
+    DIVIDE          reduce using rule 29 (expression -> TRUE .)
+    PLUS            reduce using rule 29 (expression -> TRUE .)
+    MINUS           reduce using rule 29 (expression -> TRUE .)
+    MORE            reduce using rule 29 (expression -> TRUE .)
+    LESS            reduce using rule 29 (expression -> TRUE .)
+    MOEQ            reduce using rule 29 (expression -> TRUE .)
+    LEEQ            reduce using rule 29 (expression -> TRUE .)
+    DEQUALS         reduce using rule 29 (expression -> TRUE .)
+    NEWLINE         reduce using rule 29 (expression -> TRUE .)
+    $end            reduce using rule 29 (expression -> TRUE .)
+    COMMA           reduce using rule 29 (expression -> TRUE .)
+    PAR             reduce using rule 29 (expression -> TRUE .)
+    LBRAC           reduce using rule 29 (expression -> TRUE .)
+
+
+state 17
+
+    (30) expression -> FALSE .
+
+    MULTIPLY        reduce using rule 30 (expression -> FALSE .)
+    DIVIDE          reduce using rule 30 (expression -> FALSE .)
+    PLUS            reduce using rule 30 (expression -> FALSE .)
+    MINUS           reduce using rule 30 (expression -> FALSE .)
+    MORE            reduce using rule 30 (expression -> FALSE .)
+    LESS            reduce using rule 30 (expression -> FALSE .)
+    MOEQ            reduce using rule 30 (expression -> FALSE .)
+    LEEQ            reduce using rule 30 (expression -> FALSE .)
+    DEQUALS         reduce using rule 30 (expression -> FALSE .)
+    NEWLINE         reduce using rule 30 (expression -> FALSE .)
+    $end            reduce using rule 30 (expression -> FALSE .)
+    COMMA           reduce using rule 30 (expression -> FALSE .)
+    PAR             reduce using rule 30 (expression -> FALSE .)
+    LBRAC           reduce using rule 30 (expression -> FALSE .)
+
+
+state 18
+
+    (31) expression -> PAL . expression PAR
+    (41) tuple -> PAL . data PAR
+    (16) expression -> . MINUS expression
+    (17) expression -> . expression MULTIPLY expression
+    (18) expression -> . expression DIVIDE expression
+    (19) expression -> . expression PLUS expression
+    (20) expression -> . expression MINUS expression
+    (21) expression -> . expression MORE expression
+    (22) expression -> . expression LESS expression
+    (23) expression -> . expression MOEQ expression
+    (24) expression -> . expression LEEQ expression
+    (25) expression -> . expression DEQUALS expression
+    (26) expression -> . INT
+    (27) expression -> . FLOAT
+    (28) expression -> . call
+    (29) expression -> . TRUE
+    (30) expression -> . FALSE
+    (31) expression -> . PAL expression PAR
+    (32) expression -> . NAME
+    (33) data -> . data COMMA data
+    (34) data -> . string
+    (35) data -> . INT
+    (36) data -> . FLOAT
+    (37) data -> . tuple
+    (38) data -> . expression
+    (39) data -> . empty
+    (2) call -> . NAME tuple
+    (40) string -> . STRING
+    (41) tuple -> . PAL data PAR
+    (47) empty -> . none
+    (48) empty -> . comment
+    (49) none -> .
+    (50) comment -> . COMMENT
+
+    MINUS           shift and go to state 12
+    INT             shift and go to state 13
+    FLOAT           shift and go to state 14
+    TRUE            shift and go to state 16
+    FALSE           shift and go to state 17
+    PAL             shift and go to state 18
+    NAME            shift and go to state 44
+    STRING          shift and go to state 27
+    PAR             reduce using rule 49 (none -> .)
+    COMMA           reduce using rule 49 (none -> .)
+    COMMENT         shift and go to state 26
+
+    expression                     shift and go to state 45
+    data                           shift and go to state 46
+    call                           shift and go to state 15
+    string                         shift and go to state 20
+    tuple                          shift and go to state 21
+    empty                          shift and go to state 47
+    none                           shift and go to state 22
+    comment                        shift and go to state 48
+
+state 19
+
+    (32) expression -> NAME .
+    (13) var_assign -> NAME . EQUALS expression
+    (14) var_assign -> NAME . EQUALS data
+    (2) call -> NAME . tuple
+    (41) tuple -> . PAL data PAR
+
+    MULTIPLY        reduce using rule 32 (expression -> NAME .)
+    DIVIDE          reduce using rule 32 (expression -> NAME .)
+    PLUS            reduce using rule 32 (expression -> NAME .)
+    MINUS           reduce using rule 32 (expression -> NAME .)
+    MORE            reduce using rule 32 (expression -> NAME .)
+    LESS            reduce using rule 32 (expression -> NAME .)
+    MOEQ            reduce using rule 32 (expression -> NAME .)
+    LEEQ            reduce using rule 32 (expression -> NAME .)
+    DEQUALS         reduce using rule 32 (expression -> NAME .)
+    NEWLINE         reduce using rule 32 (expression -> NAME .)
+    $end            reduce using rule 32 (expression -> NAME .)
+    COMMA           reduce using rule 32 (expression -> NAME .)
+    LBRAC           reduce using rule 32 (expression -> NAME .)
+    EQUALS          shift and go to state 49
+    PAL             shift and go to state 51
+
+    tuple                          shift and go to state 50
+
+state 20
+
+    (34) data -> string .
+
+    COMMA           reduce using rule 34 (data -> string .)
+    NEWLINE         reduce using rule 34 (data -> string .)
+    $end            reduce using rule 34 (data -> string .)
+    PAR             reduce using rule 34 (data -> string .)
+    LBRAC           reduce using rule 34 (data -> string .)
+
+
+state 21
+
+    (37) data -> tuple .
+
+    COMMA           reduce using rule 37 (data -> tuple .)
+    NEWLINE         reduce using rule 37 (data -> tuple .)
+    $end            reduce using rule 37 (data -> tuple .)
+    PAR             reduce using rule 37 (data -> tuple .)
+    LBRAC           reduce using rule 37 (data -> tuple .)
+
+
+state 22
+
+    (47) empty -> none .
+
+    NEWLINE         reduce using rule 47 (empty -> none .)
+    $end            reduce using rule 47 (empty -> none .)
+    COMMA           reduce using rule 47 (empty -> none .)
+    PAR             reduce using rule 47 (empty -> none .)
+    LBRAC           reduce using rule 47 (empty -> none .)
+
+
+state 23
+
+    (42) while -> WHILE . RBRAC expression LBRAC RBRAC calc LBRAC
+
+    RBRAC           shift and go to state 52
+
+
+state 24
+
+    (44) method -> METHOD . NAME tuple RBRAC calc LBRAC
+
+    NAME            shift and go to state 53
+
+
+state 25
+
+    (43) output -> OUTPUT . expression
+    (16) expression -> . MINUS expression
+    (17) expression -> . expression MULTIPLY expression
+    (18) expression -> . expression DIVIDE expression
+    (19) expression -> . expression PLUS expression
+    (20) expression -> . expression MINUS expression
+    (21) expression -> . expression MORE expression
+    (22) expression -> . expression LESS expression
+    (23) expression -> . expression MOEQ expression
+    (24) expression -> . expression LEEQ expression
+    (25) expression -> . expression DEQUALS expression
+    (26) expression -> . INT
+    (27) expression -> . FLOAT
+    (28) expression -> . call
+    (29) expression -> . TRUE
+    (30) expression -> . FALSE
+    (31) expression -> . PAL expression PAR
+    (32) expression -> . NAME
+    (2) call -> . NAME tuple
+
+    MINUS           shift and go to state 12
+    INT             shift and go to state 41
+    FLOAT           shift and go to state 42
+    TRUE            shift and go to state 16
+    FALSE           shift and go to state 17
+    PAL             shift and go to state 43
+    NAME            shift and go to state 44
+
+    expression                     shift and go to state 54
+    call                           shift and go to state 15
+
+state 26
+
+    (50) comment -> COMMENT .
+
+    NEWLINE         reduce using rule 50 (comment -> COMMENT .)
+    $end            reduce using rule 50 (comment -> COMMENT .)
+    COMMA           reduce using rule 50 (comment -> COMMENT .)
+    PAR             reduce using rule 50 (comment -> COMMENT .)
+    LBRAC           reduce using rule 50 (comment -> COMMENT .)
+
+
+state 27
+
+    (40) string -> STRING .
+
+    COMMA           reduce using rule 40 (string -> STRING .)
+    NEWLINE         reduce using rule 40 (string -> STRING .)
+    $end            reduce using rule 40 (string -> STRING .)
+    PAR             reduce using rule 40 (string -> STRING .)
+    LBRAC           reduce using rule 40 (string -> STRING .)
+
+
+state 28
+
+    (1) calc -> calc NEWLINE . calc
+    (1) calc -> . calc NEWLINE calc
+    (3) calc -> . if
+    (4) calc -> . expression
+    (5) calc -> . var_assign
+    (6) calc -> . data
+    (7) calc -> . empty
+    (8) calc -> . while
+    (9) calc -> . method
+    (10) calc -> . output
+    (11) calc -> . comment
+    (12) if -> . IF RBRAC calc LBRAC RBRAC calc LBRAC elif
+    (15) if -> . IF RBRAC calc LBRAC RBRAC calc LBRAC
+    (16) expression -> . MINUS expression
+    (17) expression -> . expression MULTIPLY expression
+    (18) expression -> . expression DIVIDE expression
+    (19) expression -> . expression PLUS expression
+    (20) expression -> . expression MINUS expression
+    (21) expression -> . expression MORE expression
+    (22) expression -> . expression LESS expression
+    (23) expression -> . expression MOEQ expression
+    (24) expression -> . expression LEEQ expression
+    (25) expression -> . expression DEQUALS expression
+    (26) expression -> . INT
+    (27) expression -> . FLOAT
+    (28) expression -> . call
+    (29) expression -> . TRUE
+    (30) expression -> . FALSE
+    (31) expression -> . PAL expression PAR
+    (32) expression -> . NAME
+    (13) var_assign -> . NAME EQUALS expression
+    (14) var_assign -> . NAME EQUALS data
+    (33) data -> . data COMMA data
+    (34) data -> . string
+    (35) data -> . INT
+    (36) data -> . FLOAT
+    (37) data -> . tuple
+    (38) data -> . expression
+    (39) data -> . empty
+    (47) empty -> . none
+    (48) empty -> . comment
+    (42) while -> . WHILE RBRAC expression LBRAC RBRAC calc LBRAC
+    (44) method -> . METHOD NAME tuple RBRAC calc LBRAC
+    (43) output -> . OUTPUT expression
+    (50) comment -> . COMMENT
+    (2) call -> . NAME tuple
+    (40) string -> . STRING
+    (41) tuple -> . PAL data PAR
+    (49) none -> .
+
+    IF              shift and go to state 11
+    MINUS           shift and go to state 12
+    INT             shift and go to state 13
+    FLOAT           shift and go to state 14
+    TRUE            shift and go to state 16
+    FALSE           shift and go to state 17
+    PAL             shift and go to state 18
+    NAME            shift and go to state 19
+    WHILE           shift and go to state 23
+    METHOD          shift and go to state 24
+    OUTPUT          shift and go to state 25
+    COMMENT         shift and go to state 26
+    STRING          shift and go to state 27
+    NEWLINE         reduce using rule 49 (none -> .)
+    $end            reduce using rule 49 (none -> .)
+    LBRAC           reduce using rule 49 (none -> .)
+    COMMA           reduce using rule 49 (none -> .)
+
+    calc                           shift and go to state 55
+    if                             shift and go to state 2
+    expression                     shift and go to state 3
+    var_assign                     shift and go to state 4
+    data                           shift and go to state 5
+    empty                          shift and go to state 6
+    while                          shift and go to state 7
+    method                         shift and go to state 8
+    output                         shift and go to state 9
+    comment                        shift and go to state 10
+    call                           shift and go to state 15
+    string                         shift and go to state 20
+    tuple                          shift and go to state 21
+    none                           shift and go to state 22
+
+state 29
+
+    (17) expression -> expression MULTIPLY . expression
+    (16) expression -> . MINUS expression
+    (17) expression -> . expression MULTIPLY expression
+    (18) expression -> . expression DIVIDE expression
+    (19) expression -> . expression PLUS expression
+    (20) expression -> . expression MINUS expression
+    (21) expression -> . expression MORE expression
+    (22) expression -> . expression LESS expression
+    (23) expression -> . expression MOEQ expression
+    (24) expression -> . expression LEEQ expression
+    (25) expression -> . expression DEQUALS expression
+    (26) expression -> . INT
+    (27) expression -> . FLOAT
+    (28) expression -> . call
+    (29) expression -> . TRUE
+    (30) expression -> . FALSE
+    (31) expression -> . PAL expression PAR
+    (32) expression -> . NAME
+    (2) call -> . NAME tuple
+
+    MINUS           shift and go to state 12
+    INT             shift and go to state 41
+    FLOAT           shift and go to state 42
+    TRUE            shift and go to state 16
+    FALSE           shift and go to state 17
+    PAL             shift and go to state 43
+    NAME            shift and go to state 44
+
+    expression                     shift and go to state 56
+    call                           shift and go to state 15
+
+state 30
+
+    (18) expression -> expression DIVIDE . expression
+    (16) expression -> . MINUS expression
+    (17) expression -> . expression MULTIPLY expression
+    (18) expression -> . expression DIVIDE expression
+    (19) expression -> . expression PLUS expression
+    (20) expression -> . expression MINUS expression
+    (21) expression -> . expression MORE expression
+    (22) expression -> . expression LESS expression
+    (23) expression -> . expression MOEQ expression
+    (24) expression -> . expression LEEQ expression
+    (25) expression -> . expression DEQUALS expression
+    (26) expression -> . INT
+    (27) expression -> . FLOAT
+    (28) expression -> . call
+    (29) expression -> . TRUE
+    (30) expression -> . FALSE
+    (31) expression -> . PAL expression PAR
+    (32) expression -> . NAME
+    (2) call -> . NAME tuple
+
+    MINUS           shift and go to state 12
+    INT             shift and go to state 41
+    FLOAT           shift and go to state 42
+    TRUE            shift and go to state 16
+    FALSE           shift and go to state 17
+    PAL             shift and go to state 43
+    NAME            shift and go to state 44
+
+    expression                     shift and go to state 57
+    call                           shift and go to state 15
+
+state 31
+
+    (19) expression -> expression PLUS . expression
+    (16) expression -> . MINUS expression
+    (17) expression -> . expression MULTIPLY expression
+    (18) expression -> . expression DIVIDE expression
+    (19) expression -> . expression PLUS expression
+    (20) expression -> . expression MINUS expression
+    (21) expression -> . expression MORE expression
+    (22) expression -> . expression LESS expression
+    (23) expression -> . expression MOEQ expression
+    (24) expression -> . expression LEEQ expression
+    (25) expression -> . expression DEQUALS expression
+    (26) expression -> . INT
+    (27) expression -> . FLOAT
+    (28) expression -> . call
+    (29) expression -> . TRUE
+    (30) expression -> . FALSE
+    (31) expression -> . PAL expression PAR
+    (32) expression -> . NAME
+    (2) call -> . NAME tuple
+
+    MINUS           shift and go to state 12
+    INT             shift and go to state 41
+    FLOAT           shift and go to state 42
+    TRUE            shift and go to state 16
+    FALSE           shift and go to state 17
+    PAL             shift and go to state 43
+    NAME            shift and go to state 44
+
+    expression                     shift and go to state 58
+    call                           shift and go to state 15
+
+state 32
+
+    (20) expression -> expression MINUS . expression
+    (16) expression -> . MINUS expression
+    (17) expression -> . expression MULTIPLY expression
+    (18) expression -> . expression DIVIDE expression
+    (19) expression -> . expression PLUS expression
+    (20) expression -> . expression MINUS expression
+    (21) expression -> . expression MORE expression
+    (22) expression -> . expression LESS expression
+    (23) expression -> . expression MOEQ expression
+    (24) expression -> . expression LEEQ expression
+    (25) expression -> . expression DEQUALS expression
+    (26) expression -> . INT
+    (27) expression -> . FLOAT
+    (28) expression -> . call
+    (29) expression -> . TRUE
+    (30) expression -> . FALSE
+    (31) expression -> . PAL expression PAR
+    (32) expression -> . NAME
+    (2) call -> . NAME tuple
+
+    MINUS           shift and go to state 12
+    INT             shift and go to state 41
+    FLOAT           shift and go to state 42
+    TRUE            shift and go to state 16
+    FALSE           shift and go to state 17
+    PAL             shift and go to state 43
+    NAME            shift and go to state 44
+
+    expression                     shift and go to state 59
+    call                           shift and go to state 15
+
+state 33
+
+    (21) expression -> expression MORE . expression
+    (16) expression -> . MINUS expression
+    (17) expression -> . expression MULTIPLY expression
+    (18) expression -> . expression DIVIDE expression
+    (19) expression -> . expression PLUS expression
+    (20) expression -> . expression MINUS expression
+    (21) expression -> . expression MORE expression
+    (22) expression -> . expression LESS expression
+    (23) expression -> . expression MOEQ expression
+    (24) expression -> . expression LEEQ expression
+    (25) expression -> . expression DEQUALS expression
+    (26) expression -> . INT
+    (27) expression -> . FLOAT
+    (28) expression -> . call
+    (29) expression -> . TRUE
+    (30) expression -> . FALSE
+    (31) expression -> . PAL expression PAR
+    (32) expression -> . NAME
+    (2) call -> . NAME tuple
+
+    MINUS           shift and go to state 12
+    INT             shift and go to state 41
+    FLOAT           shift and go to state 42
+    TRUE            shift and go to state 16
+    FALSE           shift and go to state 17
+    PAL             shift and go to state 43
+    NAME            shift and go to state 44
+
+    expression                     shift and go to state 60
+    call                           shift and go to state 15
+
+state 34
+
+    (22) expression -> expression LESS . expression
+    (16) expression -> . MINUS expression
+    (17) expression -> . expression MULTIPLY expression
+    (18) expression -> . expression DIVIDE expression
+    (19) expression -> . expression PLUS expression
+    (20) expression -> . expression MINUS expression
+    (21) expression -> . expression MORE expression
+    (22) expression -> . expression LESS expression
+    (23) expression -> . expression MOEQ expression
+    (24) expression -> . expression LEEQ expression
+    (25) expression -> . expression DEQUALS expression
+    (26) expression -> . INT
+    (27) expression -> . FLOAT
+    (28) expression -> . call
+    (29) expression -> . TRUE
+    (30) expression -> . FALSE
+    (31) expression -> . PAL expression PAR
+    (32) expression -> . NAME
+    (2) call -> . NAME tuple
+
+    MINUS           shift and go to state 12
+    INT             shift and go to state 41
+    FLOAT           shift and go to state 42
+    TRUE            shift and go to state 16
+    FALSE           shift and go to state 17
+    PAL             shift and go to state 43
+    NAME            shift and go to state 44
+
+    expression                     shift and go to state 61
+    call                           shift and go to state 15
+
+state 35
+
+    (23) expression -> expression MOEQ . expression
+    (16) expression -> . MINUS expression
+    (17) expression -> . expression MULTIPLY expression
+    (18) expression -> . expression DIVIDE expression
+    (19) expression -> . expression PLUS expression
+    (20) expression -> . expression MINUS expression
+    (21) expression -> . expression MORE expression
+    (22) expression -> . expression LESS expression
+    (23) expression -> . expression MOEQ expression
+    (24) expression -> . expression LEEQ expression
+    (25) expression -> . expression DEQUALS expression
+    (26) expression -> . INT
+    (27) expression -> . FLOAT
+    (28) expression -> . call
+    (29) expression -> . TRUE
+    (30) expression -> . FALSE
+    (31) expression -> . PAL expression PAR
+    (32) expression -> . NAME
+    (2) call -> . NAME tuple
+
+    MINUS           shift and go to state 12
+    INT             shift and go to state 41
+    FLOAT           shift and go to state 42
+    TRUE            shift and go to state 16
+    FALSE           shift and go to state 17
+    PAL             shift and go to state 43
+    NAME            shift and go to state 44
+
+    expression                     shift and go to state 62
+    call                           shift and go to state 15
+
+state 36
+
+    (24) expression -> expression LEEQ . expression
+    (16) expression -> . MINUS expression
+    (17) expression -> . expression MULTIPLY expression
+    (18) expression -> . expression DIVIDE expression
+    (19) expression -> . expression PLUS expression
+    (20) expression -> . expression MINUS expression
+    (21) expression -> . expression MORE expression
+    (22) expression -> . expression LESS expression
+    (23) expression -> . expression MOEQ expression
+    (24) expression -> . expression LEEQ expression
+    (25) expression -> . expression DEQUALS expression
+    (26) expression -> . INT
+    (27) expression -> . FLOAT
+    (28) expression -> . call
+    (29) expression -> . TRUE
+    (30) expression -> . FALSE
+    (31) expression -> . PAL expression PAR
+    (32) expression -> . NAME
+    (2) call -> . NAME tuple
+
+    MINUS           shift and go to state 12
+    INT             shift and go to state 41
+    FLOAT           shift and go to state 42
+    TRUE            shift and go to state 16
+    FALSE           shift and go to state 17
+    PAL             shift and go to state 43
+    NAME            shift and go to state 44
+
+    expression                     shift and go to state 63
+    call                           shift and go to state 15
+
+state 37
+
+    (25) expression -> expression DEQUALS . expression
+    (16) expression -> . MINUS expression
+    (17) expression -> . expression MULTIPLY expression
+    (18) expression -> . expression DIVIDE expression
+    (19) expression -> . expression PLUS expression
+    (20) expression -> . expression MINUS expression
+    (21) expression -> . expression MORE expression
+    (22) expression -> . expression LESS expression
+    (23) expression -> . expression MOEQ expression
+    (24) expression -> . expression LEEQ expression
+    (25) expression -> . expression DEQUALS expression
+    (26) expression -> . INT
+    (27) expression -> . FLOAT
+    (28) expression -> . call
+    (29) expression -> . TRUE
+    (30) expression -> . FALSE
+    (31) expression -> . PAL expression PAR
+    (32) expression -> . NAME
+    (2) call -> . NAME tuple
+
+    MINUS           shift and go to state 12
+    INT             shift and go to state 41
+    FLOAT           shift and go to state 42
+    TRUE            shift and go to state 16
+    FALSE           shift and go to state 17
+    PAL             shift and go to state 43
+    NAME            shift and go to state 44
+
+    expression                     shift and go to state 64
+    call                           shift and go to state 15
+
+state 38
+
+    (33) data -> data COMMA . data
+    (33) data -> . data COMMA data
+    (34) data -> . string
+    (35) data -> . INT
+    (36) data -> . FLOAT
+    (37) data -> . tuple
+    (38) data -> . expression
+    (39) data -> . empty
+    (40) string -> . STRING
+    (41) tuple -> . PAL data PAR
+    (16) expression -> . MINUS expression
+    (17) expression -> . expression MULTIPLY expression
+    (18) expression -> . expression DIVIDE expression
+    (19) expression -> . expression PLUS expression
+    (20) expression -> . expression MINUS expression
+    (21) expression -> . expression MORE expression
+    (22) expression -> . expression LESS expression
+    (23) expression -> . expression MOEQ expression
+    (24) expression -> . expression LEEQ expression
+    (25) expression -> . expression DEQUALS expression
+    (26) expression -> . INT
+    (27) expression -> . FLOAT
+    (28) expression -> . call
+    (29) expression -> . TRUE
+    (30) expression -> . FALSE
+    (31) expression -> . PAL expression PAR
+    (32) expression -> . NAME
+    (47) empty -> . none
+    (48) empty -> . comment
+    (2) call -> . NAME tuple
+    (49) none -> .
+    (50) comment -> . COMMENT
+
+    INT             shift and go to state 66
+    FLOAT           shift and go to state 67
+    STRING          shift and go to state 27
+    PAL             shift and go to state 69
+    MINUS           shift and go to state 12
+    TRUE            shift and go to state 16
+    FALSE           shift and go to state 17
+    NAME            shift and go to state 44
+    COMMA           reduce using rule 49 (none -> .)
+    NEWLINE         reduce using rule 49 (none -> .)
+    $end            reduce using rule 49 (none -> .)
+    PAR             reduce using rule 49 (none -> .)
+    LBRAC           reduce using rule 49 (none -> .)
+    COMMENT         shift and go to state 26
+
+    data                           shift and go to state 65
+    string                         shift and go to state 20
+    tuple                          shift and go to state 21
+    expression                     shift and go to state 68
+    empty                          shift and go to state 47
+    call                           shift and go to state 15
+    none                           shift and go to state 22
+    comment                        shift and go to state 48
+
+state 39
+
+    (12) if -> IF RBRAC . calc LBRAC RBRAC calc LBRAC elif
+    (15) if -> IF RBRAC . calc LBRAC RBRAC calc LBRAC
+    (1) calc -> . calc NEWLINE calc
+    (3) calc -> . if
+    (4) calc -> . expression
+    (5) calc -> . var_assign
+    (6) calc -> . data
+    (7) calc -> . empty
+    (8) calc -> . while
+    (9) calc -> . method
+    (10) calc -> . output
+    (11) calc -> . comment
+    (12) if -> . IF RBRAC calc LBRAC RBRAC calc LBRAC elif
+    (15) if -> . IF RBRAC calc LBRAC RBRAC calc LBRAC
+    (16) expression -> . MINUS expression
+    (17) expression -> . expression MULTIPLY expression
+    (18) expression -> . expression DIVIDE expression
+    (19) expression -> . expression PLUS expression
+    (20) expression -> . expression MINUS expression
+    (21) expression -> . expression MORE expression
+    (22) expression -> . expression LESS expression
+    (23) expression -> . expression MOEQ expression
+    (24) expression -> . expression LEEQ expression
+    (25) expression -> . expression DEQUALS expression
+    (26) expression -> . INT
+    (27) expression -> . FLOAT
+    (28) expression -> . call
+    (29) expression -> . TRUE
+    (30) expression -> . FALSE
+    (31) expression -> . PAL expression PAR
+    (32) expression -> . NAME
+    (13) var_assign -> . NAME EQUALS expression
+    (14) var_assign -> . NAME EQUALS data
+    (33) data -> . data COMMA data
+    (34) data -> . string
+    (35) data -> . INT
+    (36) data -> . FLOAT
+    (37) data -> . tuple
+    (38) data -> . expression
+    (39) data -> . empty
+    (47) empty -> . none
+    (48) empty -> . comment
+    (42) while -> . WHILE RBRAC expression LBRAC RBRAC calc LBRAC
+    (44) method -> . METHOD NAME tuple RBRAC calc LBRAC
+    (43) output -> . OUTPUT expression
+    (50) comment -> . COMMENT
+    (2) call -> . NAME tuple
+    (40) string -> . STRING
+    (41) tuple -> . PAL data PAR
+    (49) none -> .
+
+    IF              shift and go to state 11
+    MINUS           shift and go to state 12
+    INT             shift and go to state 13
+    FLOAT           shift and go to state 14
+    TRUE            shift and go to state 16
+    FALSE           shift and go to state 17
+    PAL             shift and go to state 18
+    NAME            shift and go to state 19
+    WHILE           shift and go to state 23
+    METHOD          shift and go to state 24
+    OUTPUT          shift and go to state 25
+    COMMENT         shift and go to state 26
+    STRING          shift and go to state 27
+    LBRAC           reduce using rule 49 (none -> .)
+    NEWLINE         reduce using rule 49 (none -> .)
+    COMMA           reduce using rule 49 (none -> .)
+
+    calc                           shift and go to state 70
+    if                             shift and go to state 2
+    expression                     shift and go to state 3
+    var_assign                     shift and go to state 4
+    data                           shift and go to state 5
+    empty                          shift and go to state 6
+    while                          shift and go to state 7
+    method                         shift and go to state 8
+    output                         shift and go to state 9
+    comment                        shift and go to state 10
+    call                           shift and go to state 15
+    string                         shift and go to state 20
+    tuple                          shift and go to state 21
+    none                           shift and go to state 22
+
+state 40
+
+    (16) expression -> MINUS expression .
+    (17) expression -> expression . MULTIPLY expression
+    (18) expression -> expression . DIVIDE expression
+    (19) expression -> expression . PLUS expression
+    (20) expression -> expression . MINUS expression
+    (21) expression -> expression . MORE expression
+    (22) expression -> expression . LESS expression
+    (23) expression -> expression . MOEQ expression
+    (24) expression -> expression . LEEQ expression
+    (25) expression -> expression . DEQUALS expression
+
+    MULTIPLY        reduce using rule 16 (expression -> MINUS expression .)
+    DIVIDE          reduce using rule 16 (expression -> MINUS expression .)
+    PLUS            reduce using rule 16 (expression -> MINUS expression .)
+    MINUS           reduce using rule 16 (expression -> MINUS expression .)
+    MORE            reduce using rule 16 (expression -> MINUS expression .)
+    LESS            reduce using rule 16 (expression -> MINUS expression .)
+    MOEQ            reduce using rule 16 (expression -> MINUS expression .)
+    LEEQ            reduce using rule 16 (expression -> MINUS expression .)
+    DEQUALS         reduce using rule 16 (expression -> MINUS expression .)
+    NEWLINE         reduce using rule 16 (expression -> MINUS expression .)
+    $end            reduce using rule 16 (expression -> MINUS expression .)
+    COMMA           reduce using rule 16 (expression -> MINUS expression .)
+    PAR             reduce using rule 16 (expression -> MINUS expression .)
+    LBRAC           reduce using rule 16 (expression -> MINUS expression .)
+
+  ! MULTIPLY        [ shift and go to state 29 ]
+  ! DIVIDE          [ shift and go to state 30 ]
+  ! PLUS            [ shift and go to state 31 ]
+  ! MINUS           [ shift and go to state 32 ]
+  ! MORE            [ shift and go to state 33 ]
+  ! LESS            [ shift and go to state 34 ]
+  ! MOEQ            [ shift and go to state 35 ]
+  ! LEEQ            [ shift and go to state 36 ]
+  ! DEQUALS         [ shift and go to state 37 ]
+
+
+state 41
+
+    (26) expression -> INT .
+
+    MULTIPLY        reduce using rule 26 (expression -> INT .)
+    DIVIDE          reduce using rule 26 (expression -> INT .)
+    PLUS            reduce using rule 26 (expression -> INT .)
+    MINUS           reduce using rule 26 (expression -> INT .)
+    MORE            reduce using rule 26 (expression -> INT .)
+    LESS            reduce using rule 26 (expression -> INT .)
+    MOEQ            reduce using rule 26 (expression -> INT .)
+    LEEQ            reduce using rule 26 (expression -> INT .)
+    DEQUALS         reduce using rule 26 (expression -> INT .)
+    NEWLINE         reduce using rule 26 (expression -> INT .)
+    $end            reduce using rule 26 (expression -> INT .)
+    COMMA           reduce using rule 26 (expression -> INT .)
+    PAR             reduce using rule 26 (expression -> INT .)
+    LBRAC           reduce using rule 26 (expression -> INT .)
+
+
+state 42
+
+    (27) expression -> FLOAT .
+
+    MULTIPLY        reduce using rule 27 (expression -> FLOAT .)
+    DIVIDE          reduce using rule 27 (expression -> FLOAT .)
+    PLUS            reduce using rule 27 (expression -> FLOAT .)
+    MINUS           reduce using rule 27 (expression -> FLOAT .)
+    MORE            reduce using rule 27 (expression -> FLOAT .)
+    LESS            reduce using rule 27 (expression -> FLOAT .)
+    MOEQ            reduce using rule 27 (expression -> FLOAT .)
+    LEEQ            reduce using rule 27 (expression -> FLOAT .)
+    DEQUALS         reduce using rule 27 (expression -> FLOAT .)
+    NEWLINE         reduce using rule 27 (expression -> FLOAT .)
+    $end            reduce using rule 27 (expression -> FLOAT .)
+    COMMA           reduce using rule 27 (expression -> FLOAT .)
+    PAR             reduce using rule 27 (expression -> FLOAT .)
+    LBRAC           reduce using rule 27 (expression -> FLOAT .)
+
+
+state 43
+
+    (31) expression -> PAL . expression PAR
+    (16) expression -> . MINUS expression
+    (17) expression -> . expression MULTIPLY expression
+    (18) expression -> . expression DIVIDE expression
+    (19) expression -> . expression PLUS expression
+    (20) expression -> . expression MINUS expression
+    (21) expression -> . expression MORE expression
+    (22) expression -> . expression LESS expression
+    (23) expression -> . expression MOEQ expression
+    (24) expression -> . expression LEEQ expression
+    (25) expression -> . expression DEQUALS expression
+    (26) expression -> . INT
+    (27) expression -> . FLOAT
+    (28) expression -> . call
+    (29) expression -> . TRUE
+    (30) expression -> . FALSE
+    (31) expression -> . PAL expression PAR
+    (32) expression -> . NAME
+    (2) call -> . NAME tuple
+
+    MINUS           shift and go to state 12
+    INT             shift and go to state 41
+    FLOAT           shift and go to state 42
+    TRUE            shift and go to state 16
+    FALSE           shift and go to state 17
+    PAL             shift and go to state 43
+    NAME            shift and go to state 44
+
+    expression                     shift and go to state 71
+    call                           shift and go to state 15
+
+state 44
+
+    (32) expression -> NAME .
+    (2) call -> NAME . tuple
+    (41) tuple -> . PAL data PAR
+
+    MULTIPLY        reduce using rule 32 (expression -> NAME .)
+    DIVIDE          reduce using rule 32 (expression -> NAME .)
+    PLUS            reduce using rule 32 (expression -> NAME .)
+    MINUS           reduce using rule 32 (expression -> NAME .)
+    MORE            reduce using rule 32 (expression -> NAME .)
+    LESS            reduce using rule 32 (expression -> NAME .)
+    MOEQ            reduce using rule 32 (expression -> NAME .)
+    LEEQ            reduce using rule 32 (expression -> NAME .)
+    DEQUALS         reduce using rule 32 (expression -> NAME .)
+    NEWLINE         reduce using rule 32 (expression -> NAME .)
+    $end            reduce using rule 32 (expression -> NAME .)
+    COMMA           reduce using rule 32 (expression -> NAME .)
+    PAR             reduce using rule 32 (expression -> NAME .)
+    LBRAC           reduce using rule 32 (expression -> NAME .)
+    PAL             shift and go to state 51
+
+    tuple                          shift and go to state 50
+
+state 45
+
+    (31) expression -> PAL expression . PAR
+    (17) expression -> expression . MULTIPLY expression
+    (18) expression -> expression . DIVIDE expression
+    (19) expression -> expression . PLUS expression
+    (20) expression -> expression . MINUS expression
+    (21) expression -> expression . MORE expression
+    (22) expression -> expression . LESS expression
+    (23) expression -> expression . MOEQ expression
+    (24) expression -> expression . LEEQ expression
+    (25) expression -> expression . DEQUALS expression
+    (38) data -> expression .
+
+  ! shift/reduce conflict for PAR resolved as shift
+    PAR             shift and go to state 72
+    MULTIPLY        shift and go to state 29
+    DIVIDE          shift and go to state 30
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    MORE            shift and go to state 33
+    LESS            shift and go to state 34
+    MOEQ            shift and go to state 35
+    LEEQ            shift and go to state 36
+    DEQUALS         shift and go to state 37
+    COMMA           reduce using rule 38 (data -> expression .)
+
+  ! PAR             [ reduce using rule 38 (data -> expression .) ]
+
+
+state 46
+
+    (41) tuple -> PAL data . PAR
+    (33) data -> data . COMMA data
+
+    PAR             shift and go to state 73
+    COMMA           shift and go to state 38
+
+
+state 47
+
+    (39) data -> empty .
+
+    PAR             reduce using rule 39 (data -> empty .)
+    COMMA           reduce using rule 39 (data -> empty .)
+    NEWLINE         reduce using rule 39 (data -> empty .)
+    $end            reduce using rule 39 (data -> empty .)
+    LBRAC           reduce using rule 39 (data -> empty .)
+
+
+state 48
+
+    (48) empty -> comment .
+
+    PAR             reduce using rule 48 (empty -> comment .)
+    COMMA           reduce using rule 48 (empty -> comment .)
+    NEWLINE         reduce using rule 48 (empty -> comment .)
+    $end            reduce using rule 48 (empty -> comment .)
+    LBRAC           reduce using rule 48 (empty -> comment .)
+
+
+state 49
+
+    (13) var_assign -> NAME EQUALS . expression
+    (14) var_assign -> NAME EQUALS . data
+    (16) expression -> . MINUS expression
+    (17) expression -> . expression MULTIPLY expression
+    (18) expression -> . expression DIVIDE expression
+    (19) expression -> . expression PLUS expression
+    (20) expression -> . expression MINUS expression
+    (21) expression -> . expression MORE expression
+    (22) expression -> . expression LESS expression
+    (23) expression -> . expression MOEQ expression
+    (24) expression -> . expression LEEQ expression
+    (25) expression -> . expression DEQUALS expression
+    (26) expression -> . INT
+    (27) expression -> . FLOAT
+    (28) expression -> . call
+    (29) expression -> . TRUE
+    (30) expression -> . FALSE
+    (31) expression -> . PAL expression PAR
+    (32) expression -> . NAME
+    (33) data -> . data COMMA data
+    (34) data -> . string
+    (35) data -> . INT
+    (36) data -> . FLOAT
+    (37) data -> . tuple
+    (38) data -> . expression
+    (39) data -> . empty
+    (2) call -> . NAME tuple
+    (40) string -> . STRING
+    (41) tuple -> . PAL data PAR
+    (47) empty -> . none
+    (48) empty -> . comment
+    (49) none -> .
+    (50) comment -> . COMMENT
+
+    MINUS           shift and go to state 12
+    INT             shift and go to state 13
+    FLOAT           shift and go to state 14
+    TRUE            shift and go to state 16
+    FALSE           shift and go to state 17
+    PAL             shift and go to state 18
+    NAME            shift and go to state 44
+    STRING          shift and go to state 27
+    COMMA           reduce using rule 49 (none -> .)
+    NEWLINE         reduce using rule 49 (none -> .)
+    $end            reduce using rule 49 (none -> .)
+    LBRAC           reduce using rule 49 (none -> .)
+    COMMENT         shift and go to state 26
+
+    expression                     shift and go to state 74
+    data                           shift and go to state 75
+    call                           shift and go to state 15
+    string                         shift and go to state 20
+    tuple                          shift and go to state 21
+    empty                          shift and go to state 47
+    none                           shift and go to state 22
+    comment                        shift and go to state 48
+
+state 50
+
+    (2) call -> NAME tuple .
+
+    MULTIPLY        reduce using rule 2 (call -> NAME tuple .)
+    DIVIDE          reduce using rule 2 (call -> NAME tuple .)
+    PLUS            reduce using rule 2 (call -> NAME tuple .)
+    MINUS           reduce using rule 2 (call -> NAME tuple .)
+    MORE            reduce using rule 2 (call -> NAME tuple .)
+    LESS            reduce using rule 2 (call -> NAME tuple .)
+    MOEQ            reduce using rule 2 (call -> NAME tuple .)
+    LEEQ            reduce using rule 2 (call -> NAME tuple .)
+    DEQUALS         reduce using rule 2 (call -> NAME tuple .)
+    NEWLINE         reduce using rule 2 (call -> NAME tuple .)
+    $end            reduce using rule 2 (call -> NAME tuple .)
+    COMMA           reduce using rule 2 (call -> NAME tuple .)
+    PAR             reduce using rule 2 (call -> NAME tuple .)
+    LBRAC           reduce using rule 2 (call -> NAME tuple .)
+
+
+state 51
+
+    (41) tuple -> PAL . data PAR
+    (33) data -> . data COMMA data
+    (34) data -> . string
+    (35) data -> . INT
+    (36) data -> . FLOAT
+    (37) data -> . tuple
+    (38) data -> . expression
+    (39) data -> . empty
+    (40) string -> . STRING
+    (41) tuple -> . PAL data PAR
+    (16) expression -> . MINUS expression
+    (17) expression -> . expression MULTIPLY expression
+    (18) expression -> . expression DIVIDE expression
+    (19) expression -> . expression PLUS expression
+    (20) expression -> . expression MINUS expression
+    (21) expression -> . expression MORE expression
+    (22) expression -> . expression LESS expression
+    (23) expression -> . expression MOEQ expression
+    (24) expression -> . expression LEEQ expression
+    (25) expression -> . expression DEQUALS expression
+    (26) expression -> . INT
+    (27) expression -> . FLOAT
+    (28) expression -> . call
+    (29) expression -> . TRUE
+    (30) expression -> . FALSE
+    (31) expression -> . PAL expression PAR
+    (32) expression -> . NAME
+    (47) empty -> . none
+    (48) empty -> . comment
+    (2) call -> . NAME tuple
+    (49) none -> .
+    (50) comment -> . COMMENT
+
+    INT             shift and go to state 66
+    FLOAT           shift and go to state 67
+    STRING          shift and go to state 27
+    PAL             shift and go to state 69
+    MINUS           shift and go to state 12
+    TRUE            shift and go to state 16
+    FALSE           shift and go to state 17
+    NAME            shift and go to state 44
+    PAR             reduce using rule 49 (none -> .)
+    COMMA           reduce using rule 49 (none -> .)
+    COMMENT         shift and go to state 26
+
+    data                           shift and go to state 46
+    string                         shift and go to state 20
+    tuple                          shift and go to state 21
+    expression                     shift and go to state 68
+    empty                          shift and go to state 47
+    call                           shift and go to state 15
+    none                           shift and go to state 22
+    comment                        shift and go to state 48
+
+state 52
+
+    (42) while -> WHILE RBRAC . expression LBRAC RBRAC calc LBRAC
+    (16) expression -> . MINUS expression
+    (17) expression -> . expression MULTIPLY expression
+    (18) expression -> . expression DIVIDE expression
+    (19) expression -> . expression PLUS expression
+    (20) expression -> . expression MINUS expression
+    (21) expression -> . expression MORE expression
+    (22) expression -> . expression LESS expression
+    (23) expression -> . expression MOEQ expression
+    (24) expression -> . expression LEEQ expression
+    (25) expression -> . expression DEQUALS expression
+    (26) expression -> . INT
+    (27) expression -> . FLOAT
+    (28) expression -> . call
+    (29) expression -> . TRUE
+    (30) expression -> . FALSE
+    (31) expression -> . PAL expression PAR
+    (32) expression -> . NAME
+    (2) call -> . NAME tuple
+
+    MINUS           shift and go to state 12
+    INT             shift and go to state 41
+    FLOAT           shift and go to state 42
+    TRUE            shift and go to state 16
+    FALSE           shift and go to state 17
+    PAL             shift and go to state 43
+    NAME            shift and go to state 44
+
+    expression                     shift and go to state 76
+    call                           shift and go to state 15
+
+state 53
+
+    (44) method -> METHOD NAME . tuple RBRAC calc LBRAC
+    (41) tuple -> . PAL data PAR
+
+    PAL             shift and go to state 51
+
+    tuple                          shift and go to state 77
+
+state 54
+
+    (43) output -> OUTPUT expression .
+    (17) expression -> expression . MULTIPLY expression
+    (18) expression -> expression . DIVIDE expression
+    (19) expression -> expression . PLUS expression
+    (20) expression -> expression . MINUS expression
+    (21) expression -> expression . MORE expression
+    (22) expression -> expression . LESS expression
+    (23) expression -> expression . MOEQ expression
+    (24) expression -> expression . LEEQ expression
+    (25) expression -> expression . DEQUALS expression
+
+    NEWLINE         reduce using rule 43 (output -> OUTPUT expression .)
+    $end            reduce using rule 43 (output -> OUTPUT expression .)
+    LBRAC           reduce using rule 43 (output -> OUTPUT expression .)
+    MULTIPLY        shift and go to state 29
+    DIVIDE          shift and go to state 30
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    MORE            shift and go to state 33
+    LESS            shift and go to state 34
+    MOEQ            shift and go to state 35
+    LEEQ            shift and go to state 36
+    DEQUALS         shift and go to state 37
+
+
+state 55
+
+    (1) calc -> calc NEWLINE calc .
+    (1) calc -> calc . NEWLINE calc
+
+    NEWLINE         reduce using rule 1 (calc -> calc NEWLINE calc .)
+    $end            reduce using rule 1 (calc -> calc NEWLINE calc .)
+    LBRAC           reduce using rule 1 (calc -> calc NEWLINE calc .)
+
+  ! NEWLINE         [ shift and go to state 28 ]
+
+
+state 56
+
+    (17) expression -> expression MULTIPLY expression .
+    (17) expression -> expression . MULTIPLY expression
+    (18) expression -> expression . DIVIDE expression
+    (19) expression -> expression . PLUS expression
+    (20) expression -> expression . MINUS expression
+    (21) expression -> expression . MORE expression
+    (22) expression -> expression . LESS expression
+    (23) expression -> expression . MOEQ expression
+    (24) expression -> expression . LEEQ expression
+    (25) expression -> expression . DEQUALS expression
+
+    MULTIPLY        reduce using rule 17 (expression -> expression MULTIPLY expression .)
+    DIVIDE          reduce using rule 17 (expression -> expression MULTIPLY expression .)
+    PLUS            reduce using rule 17 (expression -> expression MULTIPLY expression .)
+    MINUS           reduce using rule 17 (expression -> expression MULTIPLY expression .)
+    MORE            reduce using rule 17 (expression -> expression MULTIPLY expression .)
+    LESS            reduce using rule 17 (expression -> expression MULTIPLY expression .)
+    MOEQ            reduce using rule 17 (expression -> expression MULTIPLY expression .)
+    LEEQ            reduce using rule 17 (expression -> expression MULTIPLY expression .)
+    DEQUALS         reduce using rule 17 (expression -> expression MULTIPLY expression .)
+    NEWLINE         reduce using rule 17 (expression -> expression MULTIPLY expression .)
+    $end            reduce using rule 17 (expression -> expression MULTIPLY expression .)
+    COMMA           reduce using rule 17 (expression -> expression MULTIPLY expression .)
+    PAR             reduce using rule 17 (expression -> expression MULTIPLY expression .)
+    LBRAC           reduce using rule 17 (expression -> expression MULTIPLY expression .)
+
+  ! MULTIPLY        [ shift and go to state 29 ]
+  ! DIVIDE          [ shift and go to state 30 ]
+  ! PLUS            [ shift and go to state 31 ]
+  ! MINUS           [ shift and go to state 32 ]
+  ! MORE            [ shift and go to state 33 ]
+  ! LESS            [ shift and go to state 34 ]
+  ! MOEQ            [ shift and go to state 35 ]
+  ! LEEQ            [ shift and go to state 36 ]
+  ! DEQUALS         [ shift and go to state 37 ]
+
+
+state 57
+
+    (18) expression -> expression DIVIDE expression .
+    (17) expression -> expression . MULTIPLY expression
+    (18) expression -> expression . DIVIDE expression
+    (19) expression -> expression . PLUS expression
+    (20) expression -> expression . MINUS expression
+    (21) expression -> expression . MORE expression
+    (22) expression -> expression . LESS expression
+    (23) expression -> expression . MOEQ expression
+    (24) expression -> expression . LEEQ expression
+    (25) expression -> expression . DEQUALS expression
+
+    MULTIPLY        reduce using rule 18 (expression -> expression DIVIDE expression .)
+    DIVIDE          reduce using rule 18 (expression -> expression DIVIDE expression .)
+    PLUS            reduce using rule 18 (expression -> expression DIVIDE expression .)
+    MINUS           reduce using rule 18 (expression -> expression DIVIDE expression .)
+    MORE            reduce using rule 18 (expression -> expression DIVIDE expression .)
+    LESS            reduce using rule 18 (expression -> expression DIVIDE expression .)
+    MOEQ            reduce using rule 18 (expression -> expression DIVIDE expression .)
+    LEEQ            reduce using rule 18 (expression -> expression DIVIDE expression .)
+    DEQUALS         reduce using rule 18 (expression -> expression DIVIDE expression .)
+    NEWLINE         reduce using rule 18 (expression -> expression DIVIDE expression .)
+    $end            reduce using rule 18 (expression -> expression DIVIDE expression .)
+    COMMA           reduce using rule 18 (expression -> expression DIVIDE expression .)
+    PAR             reduce using rule 18 (expression -> expression DIVIDE expression .)
+    LBRAC           reduce using rule 18 (expression -> expression DIVIDE expression .)
+
+  ! MULTIPLY        [ shift and go to state 29 ]
+  ! DIVIDE          [ shift and go to state 30 ]
+  ! PLUS            [ shift and go to state 31 ]
+  ! MINUS           [ shift and go to state 32 ]
+  ! MORE            [ shift and go to state 33 ]
+  ! LESS            [ shift and go to state 34 ]
+  ! MOEQ            [ shift and go to state 35 ]
+  ! LEEQ            [ shift and go to state 36 ]
+  ! DEQUALS         [ shift and go to state 37 ]
+
+
+state 58
+
+    (19) expression -> expression PLUS expression .
+    (17) expression -> expression . MULTIPLY expression
+    (18) expression -> expression . DIVIDE expression
+    (19) expression -> expression . PLUS expression
+    (20) expression -> expression . MINUS expression
+    (21) expression -> expression . MORE expression
+    (22) expression -> expression . LESS expression
+    (23) expression -> expression . MOEQ expression
+    (24) expression -> expression . LEEQ expression
+    (25) expression -> expression . DEQUALS expression
+
+    PLUS            reduce using rule 19 (expression -> expression PLUS expression .)
+    MINUS           reduce using rule 19 (expression -> expression PLUS expression .)
+    MORE            reduce using rule 19 (expression -> expression PLUS expression .)
+    LESS            reduce using rule 19 (expression -> expression PLUS expression .)
+    MOEQ            reduce using rule 19 (expression -> expression PLUS expression .)
+    LEEQ            reduce using rule 19 (expression -> expression PLUS expression .)
+    DEQUALS         reduce using rule 19 (expression -> expression PLUS expression .)
+    NEWLINE         reduce using rule 19 (expression -> expression PLUS expression .)
+    $end            reduce using rule 19 (expression -> expression PLUS expression .)
+    COMMA           reduce using rule 19 (expression -> expression PLUS expression .)
+    PAR             reduce using rule 19 (expression -> expression PLUS expression .)
+    LBRAC           reduce using rule 19 (expression -> expression PLUS expression .)
+    MULTIPLY        shift and go to state 29
+    DIVIDE          shift and go to state 30
+
+  ! MULTIPLY        [ reduce using rule 19 (expression -> expression PLUS expression .) ]
+  ! DIVIDE          [ reduce using rule 19 (expression -> expression PLUS expression .) ]
+  ! PLUS            [ shift and go to state 31 ]
+  ! MINUS           [ shift and go to state 32 ]
+  ! MORE            [ shift and go to state 33 ]
+  ! LESS            [ shift and go to state 34 ]
+  ! MOEQ            [ shift and go to state 35 ]
+  ! LEEQ            [ shift and go to state 36 ]
+  ! DEQUALS         [ shift and go to state 37 ]
+
+
+state 59
+
+    (20) expression -> expression MINUS expression .
+    (17) expression -> expression . MULTIPLY expression
+    (18) expression -> expression . DIVIDE expression
+    (19) expression -> expression . PLUS expression
+    (20) expression -> expression . MINUS expression
+    (21) expression -> expression . MORE expression
+    (22) expression -> expression . LESS expression
+    (23) expression -> expression . MOEQ expression
+    (24) expression -> expression . LEEQ expression
+    (25) expression -> expression . DEQUALS expression
+
+    PLUS            reduce using rule 20 (expression -> expression MINUS expression .)
+    MINUS           reduce using rule 20 (expression -> expression MINUS expression .)
+    MORE            reduce using rule 20 (expression -> expression MINUS expression .)
+    LESS            reduce using rule 20 (expression -> expression MINUS expression .)
+    MOEQ            reduce using rule 20 (expression -> expression MINUS expression .)
+    LEEQ            reduce using rule 20 (expression -> expression MINUS expression .)
+    DEQUALS         reduce using rule 20 (expression -> expression MINUS expression .)
+    NEWLINE         reduce using rule 20 (expression -> expression MINUS expression .)
+    $end            reduce using rule 20 (expression -> expression MINUS expression .)
+    COMMA           reduce using rule 20 (expression -> expression MINUS expression .)
+    PAR             reduce using rule 20 (expression -> expression MINUS expression .)
+    LBRAC           reduce using rule 20 (expression -> expression MINUS expression .)
+    MULTIPLY        shift and go to state 29
+    DIVIDE          shift and go to state 30
+
+  ! MULTIPLY        [ reduce using rule 20 (expression -> expression MINUS expression .) ]
+  ! DIVIDE          [ reduce using rule 20 (expression -> expression MINUS expression .) ]
+  ! PLUS            [ shift and go to state 31 ]
+  ! MINUS           [ shift and go to state 32 ]
+  ! MORE            [ shift and go to state 33 ]
+  ! LESS            [ shift and go to state 34 ]
+  ! MOEQ            [ shift and go to state 35 ]
+  ! LEEQ            [ shift and go to state 36 ]
+  ! DEQUALS         [ shift and go to state 37 ]
+
+
+state 60
+
+    (21) expression -> expression MORE expression .
+    (17) expression -> expression . MULTIPLY expression
+    (18) expression -> expression . DIVIDE expression
+    (19) expression -> expression . PLUS expression
+    (20) expression -> expression . MINUS expression
+    (21) expression -> expression . MORE expression
+    (22) expression -> expression . LESS expression
+    (23) expression -> expression . MOEQ expression
+    (24) expression -> expression . LEEQ expression
+    (25) expression -> expression . DEQUALS expression
+
+    MORE            reduce using rule 21 (expression -> expression MORE expression .)
+    LESS            reduce using rule 21 (expression -> expression MORE expression .)
+    MOEQ            reduce using rule 21 (expression -> expression MORE expression .)
+    LEEQ            reduce using rule 21 (expression -> expression MORE expression .)
+    DEQUALS         reduce using rule 21 (expression -> expression MORE expression .)
+    NEWLINE         reduce using rule 21 (expression -> expression MORE expression .)
+    $end            reduce using rule 21 (expression -> expression MORE expression .)
+    COMMA           reduce using rule 21 (expression -> expression MORE expression .)
+    PAR             reduce using rule 21 (expression -> expression MORE expression .)
+    LBRAC           reduce using rule 21 (expression -> expression MORE expression .)
+    MULTIPLY        shift and go to state 29
+    DIVIDE          shift and go to state 30
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+
+  ! MULTIPLY        [ reduce using rule 21 (expression -> expression MORE expression .) ]
+  ! DIVIDE          [ reduce using rule 21 (expression -> expression MORE expression .) ]
+  ! PLUS            [ reduce using rule 21 (expression -> expression MORE expression .) ]
+  ! MINUS           [ reduce using rule 21 (expression -> expression MORE expression .) ]
+  ! MORE            [ shift and go to state 33 ]
+  ! LESS            [ shift and go to state 34 ]
+  ! MOEQ            [ shift and go to state 35 ]
+  ! LEEQ            [ shift and go to state 36 ]
+  ! DEQUALS         [ shift and go to state 37 ]
+
+
+state 61
+
+    (22) expression -> expression LESS expression .
+    (17) expression -> expression . MULTIPLY expression
+    (18) expression -> expression . DIVIDE expression
+    (19) expression -> expression . PLUS expression
+    (20) expression -> expression . MINUS expression
+    (21) expression -> expression . MORE expression
+    (22) expression -> expression . LESS expression
+    (23) expression -> expression . MOEQ expression
+    (24) expression -> expression . LEEQ expression
+    (25) expression -> expression . DEQUALS expression
+
+    MORE            reduce using rule 22 (expression -> expression LESS expression .)
+    LESS            reduce using rule 22 (expression -> expression LESS expression .)
+    MOEQ            reduce using rule 22 (expression -> expression LESS expression .)
+    LEEQ            reduce using rule 22 (expression -> expression LESS expression .)
+    DEQUALS         reduce using rule 22 (expression -> expression LESS expression .)
+    NEWLINE         reduce using rule 22 (expression -> expression LESS expression .)
+    $end            reduce using rule 22 (expression -> expression LESS expression .)
+    COMMA           reduce using rule 22 (expression -> expression LESS expression .)
+    PAR             reduce using rule 22 (expression -> expression LESS expression .)
+    LBRAC           reduce using rule 22 (expression -> expression LESS expression .)
+    MULTIPLY        shift and go to state 29
+    DIVIDE          shift and go to state 30
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+
+  ! MULTIPLY        [ reduce using rule 22 (expression -> expression LESS expression .) ]
+  ! DIVIDE          [ reduce using rule 22 (expression -> expression LESS expression .) ]
+  ! PLUS            [ reduce using rule 22 (expression -> expression LESS expression .) ]
+  ! MINUS           [ reduce using rule 22 (expression -> expression LESS expression .) ]
+  ! MORE            [ shift and go to state 33 ]
+  ! LESS            [ shift and go to state 34 ]
+  ! MOEQ            [ shift and go to state 35 ]
+  ! LEEQ            [ shift and go to state 36 ]
+  ! DEQUALS         [ shift and go to state 37 ]
+
+
+state 62
+
+    (23) expression -> expression MOEQ expression .
+    (17) expression -> expression . MULTIPLY expression
+    (18) expression -> expression . DIVIDE expression
+    (19) expression -> expression . PLUS expression
+    (20) expression -> expression . MINUS expression
+    (21) expression -> expression . MORE expression
+    (22) expression -> expression . LESS expression
+    (23) expression -> expression . MOEQ expression
+    (24) expression -> expression . LEEQ expression
+    (25) expression -> expression . DEQUALS expression
+
+    MORE            reduce using rule 23 (expression -> expression MOEQ expression .)
+    LESS            reduce using rule 23 (expression -> expression MOEQ expression .)
+    MOEQ            reduce using rule 23 (expression -> expression MOEQ expression .)
+    LEEQ            reduce using rule 23 (expression -> expression MOEQ expression .)
+    DEQUALS         reduce using rule 23 (expression -> expression MOEQ expression .)
+    NEWLINE         reduce using rule 23 (expression -> expression MOEQ expression .)
+    $end            reduce using rule 23 (expression -> expression MOEQ expression .)
+    COMMA           reduce using rule 23 (expression -> expression MOEQ expression .)
+    PAR             reduce using rule 23 (expression -> expression MOEQ expression .)
+    LBRAC           reduce using rule 23 (expression -> expression MOEQ expression .)
+    MULTIPLY        shift and go to state 29
+    DIVIDE          shift and go to state 30
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+
+  ! MULTIPLY        [ reduce using rule 23 (expression -> expression MOEQ expression .) ]
+  ! DIVIDE          [ reduce using rule 23 (expression -> expression MOEQ expression .) ]
+  ! PLUS            [ reduce using rule 23 (expression -> expression MOEQ expression .) ]
+  ! MINUS           [ reduce using rule 23 (expression -> expression MOEQ expression .) ]
+  ! MORE            [ shift and go to state 33 ]
+  ! LESS            [ shift and go to state 34 ]
+  ! MOEQ            [ shift and go to state 35 ]
+  ! LEEQ            [ shift and go to state 36 ]
+  ! DEQUALS         [ shift and go to state 37 ]
+
+
+state 63
+
+    (24) expression -> expression LEEQ expression .
+    (17) expression -> expression . MULTIPLY expression
+    (18) expression -> expression . DIVIDE expression
+    (19) expression -> expression . PLUS expression
+    (20) expression -> expression . MINUS expression
+    (21) expression -> expression . MORE expression
+    (22) expression -> expression . LESS expression
+    (23) expression -> expression . MOEQ expression
+    (24) expression -> expression . LEEQ expression
+    (25) expression -> expression . DEQUALS expression
+
+    MORE            reduce using rule 24 (expression -> expression LEEQ expression .)
+    LESS            reduce using rule 24 (expression -> expression LEEQ expression .)
+    MOEQ            reduce using rule 24 (expression -> expression LEEQ expression .)
+    LEEQ            reduce using rule 24 (expression -> expression LEEQ expression .)
+    DEQUALS         reduce using rule 24 (expression -> expression LEEQ expression .)
+    NEWLINE         reduce using rule 24 (expression -> expression LEEQ expression .)
+    $end            reduce using rule 24 (expression -> expression LEEQ expression .)
+    COMMA           reduce using rule 24 (expression -> expression LEEQ expression .)
+    PAR             reduce using rule 24 (expression -> expression LEEQ expression .)
+    LBRAC           reduce using rule 24 (expression -> expression LEEQ expression .)
+    MULTIPLY        shift and go to state 29
+    DIVIDE          shift and go to state 30
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+
+  ! MULTIPLY        [ reduce using rule 24 (expression -> expression LEEQ expression .) ]
+  ! DIVIDE          [ reduce using rule 24 (expression -> expression LEEQ expression .) ]
+  ! PLUS            [ reduce using rule 24 (expression -> expression LEEQ expression .) ]
+  ! MINUS           [ reduce using rule 24 (expression -> expression LEEQ expression .) ]
+  ! MORE            [ shift and go to state 33 ]
+  ! LESS            [ shift and go to state 34 ]
+  ! MOEQ            [ shift and go to state 35 ]
+  ! LEEQ            [ shift and go to state 36 ]
+  ! DEQUALS         [ shift and go to state 37 ]
+
+
+state 64
+
+    (25) expression -> expression DEQUALS expression .
+    (17) expression -> expression . MULTIPLY expression
+    (18) expression -> expression . DIVIDE expression
+    (19) expression -> expression . PLUS expression
+    (20) expression -> expression . MINUS expression
+    (21) expression -> expression . MORE expression
+    (22) expression -> expression . LESS expression
+    (23) expression -> expression . MOEQ expression
+    (24) expression -> expression . LEEQ expression
+    (25) expression -> expression . DEQUALS expression
+
+  ! shift/reduce conflict for MULTIPLY resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for MORE resolved as shift
+  ! shift/reduce conflict for LESS resolved as shift
+  ! shift/reduce conflict for MOEQ resolved as shift
+  ! shift/reduce conflict for LEEQ resolved as shift
+  ! shift/reduce conflict for DEQUALS resolved as shift
+    NEWLINE         reduce using rule 25 (expression -> expression DEQUALS expression .)
+    $end            reduce using rule 25 (expression -> expression DEQUALS expression .)
+    COMMA           reduce using rule 25 (expression -> expression DEQUALS expression .)
+    PAR             reduce using rule 25 (expression -> expression DEQUALS expression .)
+    LBRAC           reduce using rule 25 (expression -> expression DEQUALS expression .)
+    MULTIPLY        shift and go to state 29
+    DIVIDE          shift and go to state 30
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    MORE            shift and go to state 33
+    LESS            shift and go to state 34
+    MOEQ            shift and go to state 35
+    LEEQ            shift and go to state 36
+    DEQUALS         shift and go to state 37
+
+  ! MULTIPLY        [ reduce using rule 25 (expression -> expression DEQUALS expression .) ]
+  ! DIVIDE          [ reduce using rule 25 (expression -> expression DEQUALS expression .) ]
+  ! PLUS            [ reduce using rule 25 (expression -> expression DEQUALS expression .) ]
+  ! MINUS           [ reduce using rule 25 (expression -> expression DEQUALS expression .) ]
+  ! MORE            [ reduce using rule 25 (expression -> expression DEQUALS expression .) ]
+  ! LESS            [ reduce using rule 25 (expression -> expression DEQUALS expression .) ]
+  ! MOEQ            [ reduce using rule 25 (expression -> expression DEQUALS expression .) ]
+  ! LEEQ            [ reduce using rule 25 (expression -> expression DEQUALS expression .) ]
+  ! DEQUALS         [ reduce using rule 25 (expression -> expression DEQUALS expression .) ]
+
+
+state 65
+
+    (33) data -> data COMMA data .
+    (33) data -> data . COMMA data
+
+  ! shift/reduce conflict for COMMA resolved as shift
+    NEWLINE         reduce using rule 33 (data -> data COMMA data .)
+    $end            reduce using rule 33 (data -> data COMMA data .)
+    PAR             reduce using rule 33 (data -> data COMMA data .)
+    LBRAC           reduce using rule 33 (data -> data COMMA data .)
+    COMMA           shift and go to state 38
+
+  ! COMMA           [ reduce using rule 33 (data -> data COMMA data .) ]
+
+
+state 66
+
+    (35) data -> INT .
+    (26) expression -> INT .
+
+  ! reduce/reduce conflict for COMMA resolved using rule 26 (expression -> INT .)
+  ! reduce/reduce conflict for NEWLINE resolved using rule 26 (expression -> INT .)
+  ! reduce/reduce conflict for $end resolved using rule 26 (expression -> INT .)
+  ! reduce/reduce conflict for PAR resolved using rule 26 (expression -> INT .)
+  ! reduce/reduce conflict for LBRAC resolved using rule 26 (expression -> INT .)
+    MULTIPLY        reduce using rule 26 (expression -> INT .)
+    DIVIDE          reduce using rule 26 (expression -> INT .)
+    PLUS            reduce using rule 26 (expression -> INT .)
+    MINUS           reduce using rule 26 (expression -> INT .)
+    MORE            reduce using rule 26 (expression -> INT .)
+    LESS            reduce using rule 26 (expression -> INT .)
+    MOEQ            reduce using rule 26 (expression -> INT .)
+    LEEQ            reduce using rule 26 (expression -> INT .)
+    DEQUALS         reduce using rule 26 (expression -> INT .)
+    COMMA           reduce using rule 26 (expression -> INT .)
+    NEWLINE         reduce using rule 26 (expression -> INT .)
+    $end            reduce using rule 26 (expression -> INT .)
+    PAR             reduce using rule 26 (expression -> INT .)
+    LBRAC           reduce using rule 26 (expression -> INT .)
+
+  ! COMMA           [ reduce using rule 35 (data -> INT .) ]
+  ! NEWLINE         [ reduce using rule 35 (data -> INT .) ]
+  ! $end            [ reduce using rule 35 (data -> INT .) ]
+  ! PAR             [ reduce using rule 35 (data -> INT .) ]
+  ! LBRAC           [ reduce using rule 35 (data -> INT .) ]
+
+
+state 67
+
+    (36) data -> FLOAT .
+    (27) expression -> FLOAT .
+
+  ! reduce/reduce conflict for COMMA resolved using rule 27 (expression -> FLOAT .)
+  ! reduce/reduce conflict for NEWLINE resolved using rule 27 (expression -> FLOAT .)
+  ! reduce/reduce conflict for $end resolved using rule 27 (expression -> FLOAT .)
+  ! reduce/reduce conflict for PAR resolved using rule 27 (expression -> FLOAT .)
+  ! reduce/reduce conflict for LBRAC resolved using rule 27 (expression -> FLOAT .)
+    MULTIPLY        reduce using rule 27 (expression -> FLOAT .)
+    DIVIDE          reduce using rule 27 (expression -> FLOAT .)
+    PLUS            reduce using rule 27 (expression -> FLOAT .)
+    MINUS           reduce using rule 27 (expression -> FLOAT .)
+    MORE            reduce using rule 27 (expression -> FLOAT .)
+    LESS            reduce using rule 27 (expression -> FLOAT .)
+    MOEQ            reduce using rule 27 (expression -> FLOAT .)
+    LEEQ            reduce using rule 27 (expression -> FLOAT .)
+    DEQUALS         reduce using rule 27 (expression -> FLOAT .)
+    COMMA           reduce using rule 27 (expression -> FLOAT .)
+    NEWLINE         reduce using rule 27 (expression -> FLOAT .)
+    $end            reduce using rule 27 (expression -> FLOAT .)
+    PAR             reduce using rule 27 (expression -> FLOAT .)
+    LBRAC           reduce using rule 27 (expression -> FLOAT .)
+
+  ! COMMA           [ reduce using rule 36 (data -> FLOAT .) ]
+  ! NEWLINE         [ reduce using rule 36 (data -> FLOAT .) ]
+  ! $end            [ reduce using rule 36 (data -> FLOAT .) ]
+  ! PAR             [ reduce using rule 36 (data -> FLOAT .) ]
+  ! LBRAC           [ reduce using rule 36 (data -> FLOAT .) ]
+
+
+state 68
+
+    (38) data -> expression .
+    (17) expression -> expression . MULTIPLY expression
+    (18) expression -> expression . DIVIDE expression
+    (19) expression -> expression . PLUS expression
+    (20) expression -> expression . MINUS expression
+    (21) expression -> expression . MORE expression
+    (22) expression -> expression . LESS expression
+    (23) expression -> expression . MOEQ expression
+    (24) expression -> expression . LEEQ expression
+    (25) expression -> expression . DEQUALS expression
+
+    COMMA           reduce using rule 38 (data -> expression .)
+    NEWLINE         reduce using rule 38 (data -> expression .)
+    $end            reduce using rule 38 (data -> expression .)
+    PAR             reduce using rule 38 (data -> expression .)
+    LBRAC           reduce using rule 38 (data -> expression .)
+    MULTIPLY        shift and go to state 29
+    DIVIDE          shift and go to state 30
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    MORE            shift and go to state 33
+    LESS            shift and go to state 34
+    MOEQ            shift and go to state 35
+    LEEQ            shift and go to state 36
+    DEQUALS         shift and go to state 37
+
+
+state 69
+
+    (41) tuple -> PAL . data PAR
+    (31) expression -> PAL . expression PAR
+    (33) data -> . data COMMA data
+    (34) data -> . string
+    (35) data -> . INT
+    (36) data -> . FLOAT
+    (37) data -> . tuple
+    (38) data -> . expression
+    (39) data -> . empty
+    (16) expression -> . MINUS expression
+    (17) expression -> . expression MULTIPLY expression
+    (18) expression -> . expression DIVIDE expression
+    (19) expression -> . expression PLUS expression
+    (20) expression -> . expression MINUS expression
+    (21) expression -> . expression MORE expression
+    (22) expression -> . expression LESS expression
+    (23) expression -> . expression MOEQ expression
+    (24) expression -> . expression LEEQ expression
+    (25) expression -> . expression DEQUALS expression
+    (26) expression -> . INT
+    (27) expression -> . FLOAT
+    (28) expression -> . call
+    (29) expression -> . TRUE
+    (30) expression -> . FALSE
+    (31) expression -> . PAL expression PAR
+    (32) expression -> . NAME
+    (40) string -> . STRING
+    (41) tuple -> . PAL data PAR
+    (47) empty -> . none
+    (48) empty -> . comment
+    (2) call -> . NAME tuple
+    (49) none -> .
+    (50) comment -> . COMMENT
+
+    INT             shift and go to state 66
+    FLOAT           shift and go to state 67
+    MINUS           shift and go to state 12
+    TRUE            shift and go to state 16
+    FALSE           shift and go to state 17
+    PAL             shift and go to state 18
+    NAME            shift and go to state 44
+    STRING          shift and go to state 27
+    PAR             reduce using rule 49 (none -> .)
+    COMMA           reduce using rule 49 (none -> .)
+    COMMENT         shift and go to state 26
+
+    data                           shift and go to state 46
+    expression                     shift and go to state 78
+    string                         shift and go to state 20
+    tuple                          shift and go to state 21
+    empty                          shift and go to state 47
+    call                           shift and go to state 15
+    none                           shift and go to state 22
+    comment                        shift and go to state 48
+
+state 70
+
+    (12) if -> IF RBRAC calc . LBRAC RBRAC calc LBRAC elif
+    (15) if -> IF RBRAC calc . LBRAC RBRAC calc LBRAC
+    (1) calc -> calc . NEWLINE calc
+
+    LBRAC           shift and go to state 79
+    NEWLINE         shift and go to state 28
+
+
+state 71
+
+    (31) expression -> PAL expression . PAR
+    (17) expression -> expression . MULTIPLY expression
+    (18) expression -> expression . DIVIDE expression
+    (19) expression -> expression . PLUS expression
+    (20) expression -> expression . MINUS expression
+    (21) expression -> expression . MORE expression
+    (22) expression -> expression . LESS expression
+    (23) expression -> expression . MOEQ expression
+    (24) expression -> expression . LEEQ expression
+    (25) expression -> expression . DEQUALS expression
+
+    PAR             shift and go to state 72
+    MULTIPLY        shift and go to state 29
+    DIVIDE          shift and go to state 30
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    MORE            shift and go to state 33
+    LESS            shift and go to state 34
+    MOEQ            shift and go to state 35
+    LEEQ            shift and go to state 36
+    DEQUALS         shift and go to state 37
+
+
+state 72
+
+    (31) expression -> PAL expression PAR .
+
+    MULTIPLY        reduce using rule 31 (expression -> PAL expression PAR .)
+    DIVIDE          reduce using rule 31 (expression -> PAL expression PAR .)
+    PLUS            reduce using rule 31 (expression -> PAL expression PAR .)
+    MINUS           reduce using rule 31 (expression -> PAL expression PAR .)
+    MORE            reduce using rule 31 (expression -> PAL expression PAR .)
+    LESS            reduce using rule 31 (expression -> PAL expression PAR .)
+    MOEQ            reduce using rule 31 (expression -> PAL expression PAR .)
+    LEEQ            reduce using rule 31 (expression -> PAL expression PAR .)
+    DEQUALS         reduce using rule 31 (expression -> PAL expression PAR .)
+    NEWLINE         reduce using rule 31 (expression -> PAL expression PAR .)
+    $end            reduce using rule 31 (expression -> PAL expression PAR .)
+    COMMA           reduce using rule 31 (expression -> PAL expression PAR .)
+    PAR             reduce using rule 31 (expression -> PAL expression PAR .)
+    LBRAC           reduce using rule 31 (expression -> PAL expression PAR .)
+
+
+state 73
+
+    (41) tuple -> PAL data PAR .
+
+    COMMA           reduce using rule 41 (tuple -> PAL data PAR .)
+    NEWLINE         reduce using rule 41 (tuple -> PAL data PAR .)
+    $end            reduce using rule 41 (tuple -> PAL data PAR .)
+    PAR             reduce using rule 41 (tuple -> PAL data PAR .)
+    MULTIPLY        reduce using rule 41 (tuple -> PAL data PAR .)
+    DIVIDE          reduce using rule 41 (tuple -> PAL data PAR .)
+    PLUS            reduce using rule 41 (tuple -> PAL data PAR .)
+    MINUS           reduce using rule 41 (tuple -> PAL data PAR .)
+    MORE            reduce using rule 41 (tuple -> PAL data PAR .)
+    LESS            reduce using rule 41 (tuple -> PAL data PAR .)
+    MOEQ            reduce using rule 41 (tuple -> PAL data PAR .)
+    LEEQ            reduce using rule 41 (tuple -> PAL data PAR .)
+    DEQUALS         reduce using rule 41 (tuple -> PAL data PAR .)
+    LBRAC           reduce using rule 41 (tuple -> PAL data PAR .)
+    RBRAC           reduce using rule 41 (tuple -> PAL data PAR .)
+
+
+state 74
+
+    (13) var_assign -> NAME EQUALS expression .
+    (17) expression -> expression . MULTIPLY expression
+    (18) expression -> expression . DIVIDE expression
+    (19) expression -> expression . PLUS expression
+    (20) expression -> expression . MINUS expression
+    (21) expression -> expression . MORE expression
+    (22) expression -> expression . LESS expression
+    (23) expression -> expression . MOEQ expression
+    (24) expression -> expression . LEEQ expression
+    (25) expression -> expression . DEQUALS expression
+    (38) data -> expression .
+
+  ! reduce/reduce conflict for NEWLINE resolved using rule 13 (var_assign -> NAME EQUALS expression .)
+  ! reduce/reduce conflict for $end resolved using rule 13 (var_assign -> NAME EQUALS expression .)
+  ! reduce/reduce conflict for LBRAC resolved using rule 13 (var_assign -> NAME EQUALS expression .)
+    NEWLINE         reduce using rule 13 (var_assign -> NAME EQUALS expression .)
+    $end            reduce using rule 13 (var_assign -> NAME EQUALS expression .)
+    LBRAC           reduce using rule 13 (var_assign -> NAME EQUALS expression .)
+    MULTIPLY        shift and go to state 29
+    DIVIDE          shift and go to state 30
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    MORE            shift and go to state 33
+    LESS            shift and go to state 34
+    MOEQ            shift and go to state 35
+    LEEQ            shift and go to state 36
+    DEQUALS         shift and go to state 37
+    COMMA           reduce using rule 38 (data -> expression .)
+
+  ! NEWLINE         [ reduce using rule 38 (data -> expression .) ]
+  ! $end            [ reduce using rule 38 (data -> expression .) ]
+  ! LBRAC           [ reduce using rule 38 (data -> expression .) ]
+
+
+state 75
+
+    (14) var_assign -> NAME EQUALS data .
+    (33) data -> data . COMMA data
+
+    NEWLINE         reduce using rule 14 (var_assign -> NAME EQUALS data .)
+    $end            reduce using rule 14 (var_assign -> NAME EQUALS data .)
+    LBRAC           reduce using rule 14 (var_assign -> NAME EQUALS data .)
+    COMMA           shift and go to state 38
+
+
+state 76
+
+    (42) while -> WHILE RBRAC expression . LBRAC RBRAC calc LBRAC
+    (17) expression -> expression . MULTIPLY expression
+    (18) expression -> expression . DIVIDE expression
+    (19) expression -> expression . PLUS expression
+    (20) expression -> expression . MINUS expression
+    (21) expression -> expression . MORE expression
+    (22) expression -> expression . LESS expression
+    (23) expression -> expression . MOEQ expression
+    (24) expression -> expression . LEEQ expression
+    (25) expression -> expression . DEQUALS expression
+
+    LBRAC           shift and go to state 80
+    MULTIPLY        shift and go to state 29
+    DIVIDE          shift and go to state 30
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    MORE            shift and go to state 33
+    LESS            shift and go to state 34
+    MOEQ            shift and go to state 35
+    LEEQ            shift and go to state 36
+    DEQUALS         shift and go to state 37
+
+
+state 77
+
+    (44) method -> METHOD NAME tuple . RBRAC calc LBRAC
+
+    RBRAC           shift and go to state 81
+
+
+state 78
+
+    (31) expression -> PAL expression . PAR
+    (38) data -> expression .
+    (17) expression -> expression . MULTIPLY expression
+    (18) expression -> expression . DIVIDE expression
+    (19) expression -> expression . PLUS expression
+    (20) expression -> expression . MINUS expression
+    (21) expression -> expression . MORE expression
+    (22) expression -> expression . LESS expression
+    (23) expression -> expression . MOEQ expression
+    (24) expression -> expression . LEEQ expression
+    (25) expression -> expression . DEQUALS expression
+
+  ! shift/reduce conflict for PAR resolved as shift
+    PAR             shift and go to state 72
+    COMMA           reduce using rule 38 (data -> expression .)
+    MULTIPLY        shift and go to state 29
+    DIVIDE          shift and go to state 30
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    MORE            shift and go to state 33
+    LESS            shift and go to state 34
+    MOEQ            shift and go to state 35
+    LEEQ            shift and go to state 36
+    DEQUALS         shift and go to state 37
+
+  ! PAR             [ reduce using rule 38 (data -> expression .) ]
+
+
+state 79
+
+    (12) if -> IF RBRAC calc LBRAC . RBRAC calc LBRAC elif
+    (15) if -> IF RBRAC calc LBRAC . RBRAC calc LBRAC
+
+    RBRAC           shift and go to state 82
+
+
+state 80
+
+    (42) while -> WHILE RBRAC expression LBRAC . RBRAC calc LBRAC
+
+    RBRAC           shift and go to state 83
+
+
+state 81
+
+    (44) method -> METHOD NAME tuple RBRAC . calc LBRAC
+    (1) calc -> . calc NEWLINE calc
+    (3) calc -> . if
+    (4) calc -> . expression
+    (5) calc -> . var_assign
+    (6) calc -> . data
+    (7) calc -> . empty
+    (8) calc -> . while
+    (9) calc -> . method
+    (10) calc -> . output
+    (11) calc -> . comment
+    (12) if -> . IF RBRAC calc LBRAC RBRAC calc LBRAC elif
+    (15) if -> . IF RBRAC calc LBRAC RBRAC calc LBRAC
+    (16) expression -> . MINUS expression
+    (17) expression -> . expression MULTIPLY expression
+    (18) expression -> . expression DIVIDE expression
+    (19) expression -> . expression PLUS expression
+    (20) expression -> . expression MINUS expression
+    (21) expression -> . expression MORE expression
+    (22) expression -> . expression LESS expression
+    (23) expression -> . expression MOEQ expression
+    (24) expression -> . expression LEEQ expression
+    (25) expression -> . expression DEQUALS expression
+    (26) expression -> . INT
+    (27) expression -> . FLOAT
+    (28) expression -> . call
+    (29) expression -> . TRUE
+    (30) expression -> . FALSE
+    (31) expression -> . PAL expression PAR
+    (32) expression -> . NAME
+    (13) var_assign -> . NAME EQUALS expression
+    (14) var_assign -> . NAME EQUALS data
+    (33) data -> . data COMMA data
+    (34) data -> . string
+    (35) data -> . INT
+    (36) data -> . FLOAT
+    (37) data -> . tuple
+    (38) data -> . expression
+    (39) data -> . empty
+    (47) empty -> . none
+    (48) empty -> . comment
+    (42) while -> . WHILE RBRAC expression LBRAC RBRAC calc LBRAC
+    (44) method -> . METHOD NAME tuple RBRAC calc LBRAC
+    (43) output -> . OUTPUT expression
+    (50) comment -> . COMMENT
+    (2) call -> . NAME tuple
+    (40) string -> . STRING
+    (41) tuple -> . PAL data PAR
+    (49) none -> .
+
+    IF              shift and go to state 11
+    MINUS           shift and go to state 12
+    INT             shift and go to state 13
+    FLOAT           shift and go to state 14
+    TRUE            shift and go to state 16
+    FALSE           shift and go to state 17
+    PAL             shift and go to state 18
+    NAME            shift and go to state 19
+    WHILE           shift and go to state 23
+    METHOD          shift and go to state 24
+    OUTPUT          shift and go to state 25
+    COMMENT         shift and go to state 26
+    STRING          shift and go to state 27
+    LBRAC           reduce using rule 49 (none -> .)
+    NEWLINE         reduce using rule 49 (none -> .)
+    COMMA           reduce using rule 49 (none -> .)
+
+    tuple                          shift and go to state 21
+    calc                           shift and go to state 84
+    if                             shift and go to state 2
+    expression                     shift and go to state 3
+    var_assign                     shift and go to state 4
+    data                           shift and go to state 5
+    empty                          shift and go to state 6
+    while                          shift and go to state 7
+    method                         shift and go to state 8
+    output                         shift and go to state 9
+    comment                        shift and go to state 10
+    call                           shift and go to state 15
+    string                         shift and go to state 20
+    none                           shift and go to state 22
+
+state 82
+
+    (12) if -> IF RBRAC calc LBRAC RBRAC . calc LBRAC elif
+    (15) if -> IF RBRAC calc LBRAC RBRAC . calc LBRAC
+    (1) calc -> . calc NEWLINE calc
+    (3) calc -> . if
+    (4) calc -> . expression
+    (5) calc -> . var_assign
+    (6) calc -> . data
+    (7) calc -> . empty
+    (8) calc -> . while
+    (9) calc -> . method
+    (10) calc -> . output
+    (11) calc -> . comment
+    (12) if -> . IF RBRAC calc LBRAC RBRAC calc LBRAC elif
+    (15) if -> . IF RBRAC calc LBRAC RBRAC calc LBRAC
+    (16) expression -> . MINUS expression
+    (17) expression -> . expression MULTIPLY expression
+    (18) expression -> . expression DIVIDE expression
+    (19) expression -> . expression PLUS expression
+    (20) expression -> . expression MINUS expression
+    (21) expression -> . expression MORE expression
+    (22) expression -> . expression LESS expression
+    (23) expression -> . expression MOEQ expression
+    (24) expression -> . expression LEEQ expression
+    (25) expression -> . expression DEQUALS expression
+    (26) expression -> . INT
+    (27) expression -> . FLOAT
+    (28) expression -> . call
+    (29) expression -> . TRUE
+    (30) expression -> . FALSE
+    (31) expression -> . PAL expression PAR
+    (32) expression -> . NAME
+    (13) var_assign -> . NAME EQUALS expression
+    (14) var_assign -> . NAME EQUALS data
+    (33) data -> . data COMMA data
+    (34) data -> . string
+    (35) data -> . INT
+    (36) data -> . FLOAT
+    (37) data -> . tuple
+    (38) data -> . expression
+    (39) data -> . empty
+    (47) empty -> . none
+    (48) empty -> . comment
+    (42) while -> . WHILE RBRAC expression LBRAC RBRAC calc LBRAC
+    (44) method -> . METHOD NAME tuple RBRAC calc LBRAC
+    (43) output -> . OUTPUT expression
+    (50) comment -> . COMMENT
+    (2) call -> . NAME tuple
+    (40) string -> . STRING
+    (41) tuple -> . PAL data PAR
+    (49) none -> .
+
+    IF              shift and go to state 11
+    MINUS           shift and go to state 12
+    INT             shift and go to state 13
+    FLOAT           shift and go to state 14
+    TRUE            shift and go to state 16
+    FALSE           shift and go to state 17
+    PAL             shift and go to state 18
+    NAME            shift and go to state 19
+    WHILE           shift and go to state 23
+    METHOD          shift and go to state 24
+    OUTPUT          shift and go to state 25
+    COMMENT         shift and go to state 26
+    STRING          shift and go to state 27
+    LBRAC           reduce using rule 49 (none -> .)
+    NEWLINE         reduce using rule 49 (none -> .)
+    COMMA           reduce using rule 49 (none -> .)
+
+    calc                           shift and go to state 85
+    if                             shift and go to state 2
+    expression                     shift and go to state 3
+    var_assign                     shift and go to state 4
+    data                           shift and go to state 5
+    empty                          shift and go to state 6
+    while                          shift and go to state 7
+    method                         shift and go to state 8
+    output                         shift and go to state 9
+    comment                        shift and go to state 10
+    call                           shift and go to state 15
+    string                         shift and go to state 20
+    tuple                          shift and go to state 21
+    none                           shift and go to state 22
+
+state 83
+
+    (42) while -> WHILE RBRAC expression LBRAC RBRAC . calc LBRAC
+    (1) calc -> . calc NEWLINE calc
+    (3) calc -> . if
+    (4) calc -> . expression
+    (5) calc -> . var_assign
+    (6) calc -> . data
+    (7) calc -> . empty
+    (8) calc -> . while
+    (9) calc -> . method
+    (10) calc -> . output
+    (11) calc -> . comment
+    (12) if -> . IF RBRAC calc LBRAC RBRAC calc LBRAC elif
+    (15) if -> . IF RBRAC calc LBRAC RBRAC calc LBRAC
+    (16) expression -> . MINUS expression
+    (17) expression -> . expression MULTIPLY expression
+    (18) expression -> . expression DIVIDE expression
+    (19) expression -> . expression PLUS expression
+    (20) expression -> . expression MINUS expression
+    (21) expression -> . expression MORE expression
+    (22) expression -> . expression LESS expression
+    (23) expression -> . expression MOEQ expression
+    (24) expression -> . expression LEEQ expression
+    (25) expression -> . expression DEQUALS expression
+    (26) expression -> . INT
+    (27) expression -> . FLOAT
+    (28) expression -> . call
+    (29) expression -> . TRUE
+    (30) expression -> . FALSE
+    (31) expression -> . PAL expression PAR
+    (32) expression -> . NAME
+    (13) var_assign -> . NAME EQUALS expression
+    (14) var_assign -> . NAME EQUALS data
+    (33) data -> . data COMMA data
+    (34) data -> . string
+    (35) data -> . INT
+    (36) data -> . FLOAT
+    (37) data -> . tuple
+    (38) data -> . expression
+    (39) data -> . empty
+    (47) empty -> . none
+    (48) empty -> . comment
+    (42) while -> . WHILE RBRAC expression LBRAC RBRAC calc LBRAC
+    (44) method -> . METHOD NAME tuple RBRAC calc LBRAC
+    (43) output -> . OUTPUT expression
+    (50) comment -> . COMMENT
+    (2) call -> . NAME tuple
+    (40) string -> . STRING
+    (41) tuple -> . PAL data PAR
+    (49) none -> .
+
+    IF              shift and go to state 11
+    MINUS           shift and go to state 12
+    INT             shift and go to state 13
+    FLOAT           shift and go to state 14
+    TRUE            shift and go to state 16
+    FALSE           shift and go to state 17
+    PAL             shift and go to state 18
+    NAME            shift and go to state 19
+    WHILE           shift and go to state 23
+    METHOD          shift and go to state 24
+    OUTPUT          shift and go to state 25
+    COMMENT         shift and go to state 26
+    STRING          shift and go to state 27
+    LBRAC           reduce using rule 49 (none -> .)
+    NEWLINE         reduce using rule 49 (none -> .)
+    COMMA           reduce using rule 49 (none -> .)
+
+    expression                     shift and go to state 3
+    calc                           shift and go to state 86
+    if                             shift and go to state 2
+    var_assign                     shift and go to state 4
+    data                           shift and go to state 5
+    empty                          shift and go to state 6
+    while                          shift and go to state 7
+    method                         shift and go to state 8
+    output                         shift and go to state 9
+    comment                        shift and go to state 10
+    call                           shift and go to state 15
+    string                         shift and go to state 20
+    tuple                          shift and go to state 21
+    none                           shift and go to state 22
+
+state 84
+
+    (44) method -> METHOD NAME tuple RBRAC calc . LBRAC
+    (1) calc -> calc . NEWLINE calc
+
+    LBRAC           shift and go to state 87
+    NEWLINE         shift and go to state 28
+
+
+state 85
+
+    (12) if -> IF RBRAC calc LBRAC RBRAC calc . LBRAC elif
+    (15) if -> IF RBRAC calc LBRAC RBRAC calc . LBRAC
+    (1) calc -> calc . NEWLINE calc
+
+    LBRAC           shift and go to state 88
+    NEWLINE         shift and go to state 28
+
+
+state 86
+
+    (42) while -> WHILE RBRAC expression LBRAC RBRAC calc . LBRAC
+    (1) calc -> calc . NEWLINE calc
+
+    LBRAC           shift and go to state 89
+    NEWLINE         shift and go to state 28
+
+
+state 87
+
+    (44) method -> METHOD NAME tuple RBRAC calc LBRAC .
+
+    NEWLINE         reduce using rule 44 (method -> METHOD NAME tuple RBRAC calc LBRAC .)
+    $end            reduce using rule 44 (method -> METHOD NAME tuple RBRAC calc LBRAC .)
+    LBRAC           reduce using rule 44 (method -> METHOD NAME tuple RBRAC calc LBRAC .)
+
+
+state 88
+
+    (12) if -> IF RBRAC calc LBRAC RBRAC calc LBRAC . elif
+    (15) if -> IF RBRAC calc LBRAC RBRAC calc LBRAC .
+    (45) elif -> . ELIF RBRAC calc LBRAC RBRAC calc LBRAC
+    (46) elif -> . ELIF RBRAC calc LBRAC RBRAC calc LBRAC elif
+
+    NEWLINE         reduce using rule 15 (if -> IF RBRAC calc LBRAC RBRAC calc LBRAC .)
+    $end            reduce using rule 15 (if -> IF RBRAC calc LBRAC RBRAC calc LBRAC .)
+    LBRAC           reduce using rule 15 (if -> IF RBRAC calc LBRAC RBRAC calc LBRAC .)
+    ELIF            shift and go to state 91
+
+    elif                           shift and go to state 90
+
+state 89
+
+    (42) while -> WHILE RBRAC expression LBRAC RBRAC calc LBRAC .
+
+    NEWLINE         reduce using rule 42 (while -> WHILE RBRAC expression LBRAC RBRAC calc LBRAC .)
+    $end            reduce using rule 42 (while -> WHILE RBRAC expression LBRAC RBRAC calc LBRAC .)
+    LBRAC           reduce using rule 42 (while -> WHILE RBRAC expression LBRAC RBRAC calc LBRAC .)
+
+
+state 90
+
+    (12) if -> IF RBRAC calc LBRAC RBRAC calc LBRAC elif .
+
+    NEWLINE         reduce using rule 12 (if -> IF RBRAC calc LBRAC RBRAC calc LBRAC elif .)
+    $end            reduce using rule 12 (if -> IF RBRAC calc LBRAC RBRAC calc LBRAC elif .)
+    LBRAC           reduce using rule 12 (if -> IF RBRAC calc LBRAC RBRAC calc LBRAC elif .)
+
+
+state 91
+
+    (45) elif -> ELIF . RBRAC calc LBRAC RBRAC calc LBRAC
+    (46) elif -> ELIF . RBRAC calc LBRAC RBRAC calc LBRAC elif
+
+    RBRAC           shift and go to state 92
+
+
+state 92
+
+    (45) elif -> ELIF RBRAC . calc LBRAC RBRAC calc LBRAC
+    (46) elif -> ELIF RBRAC . calc LBRAC RBRAC calc LBRAC elif
+    (1) calc -> . calc NEWLINE calc
+    (3) calc -> . if
+    (4) calc -> . expression
+    (5) calc -> . var_assign
+    (6) calc -> . data
+    (7) calc -> . empty
+    (8) calc -> . while
+    (9) calc -> . method
+    (10) calc -> . output
+    (11) calc -> . comment
+    (12) if -> . IF RBRAC calc LBRAC RBRAC calc LBRAC elif
+    (15) if -> . IF RBRAC calc LBRAC RBRAC calc LBRAC
+    (16) expression -> . MINUS expression
+    (17) expression -> . expression MULTIPLY expression
+    (18) expression -> . expression DIVIDE expression
+    (19) expression -> . expression PLUS expression
+    (20) expression -> . expression MINUS expression
+    (21) expression -> . expression MORE expression
+    (22) expression -> . expression LESS expression
+    (23) expression -> . expression MOEQ expression
+    (24) expression -> . expression LEEQ expression
+    (25) expression -> . expression DEQUALS expression
+    (26) expression -> . INT
+    (27) expression -> . FLOAT
+    (28) expression -> . call
+    (29) expression -> . TRUE
+    (30) expression -> . FALSE
+    (31) expression -> . PAL expression PAR
+    (32) expression -> . NAME
+    (13) var_assign -> . NAME EQUALS expression
+    (14) var_assign -> . NAME EQUALS data
+    (33) data -> . data COMMA data
+    (34) data -> . string
+    (35) data -> . INT
+    (36) data -> . FLOAT
+    (37) data -> . tuple
+    (38) data -> . expression
+    (39) data -> . empty
+    (47) empty -> . none
+    (48) empty -> . comment
+    (42) while -> . WHILE RBRAC expression LBRAC RBRAC calc LBRAC
+    (44) method -> . METHOD NAME tuple RBRAC calc LBRAC
+    (43) output -> . OUTPUT expression
+    (50) comment -> . COMMENT
+    (2) call -> . NAME tuple
+    (40) string -> . STRING
+    (41) tuple -> . PAL data PAR
+    (49) none -> .
+
+    IF              shift and go to state 11
+    MINUS           shift and go to state 12
+    INT             shift and go to state 13
+    FLOAT           shift and go to state 14
+    TRUE            shift and go to state 16
+    FALSE           shift and go to state 17
+    PAL             shift and go to state 18
+    NAME            shift and go to state 19
+    WHILE           shift and go to state 23
+    METHOD          shift and go to state 24
+    OUTPUT          shift and go to state 25
+    COMMENT         shift and go to state 26
+    STRING          shift and go to state 27
+    LBRAC           reduce using rule 49 (none -> .)
+    NEWLINE         reduce using rule 49 (none -> .)
+    COMMA           reduce using rule 49 (none -> .)
+
+    calc                           shift and go to state 93
+    if                             shift and go to state 2
+    expression                     shift and go to state 3
+    var_assign                     shift and go to state 4
+    data                           shift and go to state 5
+    empty                          shift and go to state 6
+    while                          shift and go to state 7
+    method                         shift and go to state 8
+    output                         shift and go to state 9
+    comment                        shift and go to state 10
+    call                           shift and go to state 15
+    string                         shift and go to state 20
+    tuple                          shift and go to state 21
+    none                           shift and go to state 22
+
+state 93
+
+    (45) elif -> ELIF RBRAC calc . LBRAC RBRAC calc LBRAC
+    (46) elif -> ELIF RBRAC calc . LBRAC RBRAC calc LBRAC elif
+    (1) calc -> calc . NEWLINE calc
+
+    LBRAC           shift and go to state 94
+    NEWLINE         shift and go to state 28
+
+
+state 94
+
+    (45) elif -> ELIF RBRAC calc LBRAC . RBRAC calc LBRAC
+    (46) elif -> ELIF RBRAC calc LBRAC . RBRAC calc LBRAC elif
+
+    RBRAC           shift and go to state 95
+
+
+state 95
+
+    (45) elif -> ELIF RBRAC calc LBRAC RBRAC . calc LBRAC
+    (46) elif -> ELIF RBRAC calc LBRAC RBRAC . calc LBRAC elif
+    (1) calc -> . calc NEWLINE calc
+    (3) calc -> . if
+    (4) calc -> . expression
+    (5) calc -> . var_assign
+    (6) calc -> . data
+    (7) calc -> . empty
+    (8) calc -> . while
+    (9) calc -> . method
+    (10) calc -> . output
+    (11) calc -> . comment
+    (12) if -> . IF RBRAC calc LBRAC RBRAC calc LBRAC elif
+    (15) if -> . IF RBRAC calc LBRAC RBRAC calc LBRAC
+    (16) expression -> . MINUS expression
+    (17) expression -> . expression MULTIPLY expression
+    (18) expression -> . expression DIVIDE expression
+    (19) expression -> . expression PLUS expression
+    (20) expression -> . expression MINUS expression
+    (21) expression -> . expression MORE expression
+    (22) expression -> . expression LESS expression
+    (23) expression -> . expression MOEQ expression
+    (24) expression -> . expression LEEQ expression
+    (25) expression -> . expression DEQUALS expression
+    (26) expression -> . INT
+    (27) expression -> . FLOAT
+    (28) expression -> . call
+    (29) expression -> . TRUE
+    (30) expression -> . FALSE
+    (31) expression -> . PAL expression PAR
+    (32) expression -> . NAME
+    (13) var_assign -> . NAME EQUALS expression
+    (14) var_assign -> . NAME EQUALS data
+    (33) data -> . data COMMA data
+    (34) data -> . string
+    (35) data -> . INT
+    (36) data -> . FLOAT
+    (37) data -> . tuple
+    (38) data -> . expression
+    (39) data -> . empty
+    (47) empty -> . none
+    (48) empty -> . comment
+    (42) while -> . WHILE RBRAC expression LBRAC RBRAC calc LBRAC
+    (44) method -> . METHOD NAME tuple RBRAC calc LBRAC
+    (43) output -> . OUTPUT expression
+    (50) comment -> . COMMENT
+    (2) call -> . NAME tuple
+    (40) string -> . STRING
+    (41) tuple -> . PAL data PAR
+    (49) none -> .
+
+    IF              shift and go to state 11
+    MINUS           shift and go to state 12
+    INT             shift and go to state 13
+    FLOAT           shift and go to state 14
+    TRUE            shift and go to state 16
+    FALSE           shift and go to state 17
+    PAL             shift and go to state 18
+    NAME            shift and go to state 19
+    WHILE           shift and go to state 23
+    METHOD          shift and go to state 24
+    OUTPUT          shift and go to state 25
+    COMMENT         shift and go to state 26
+    STRING          shift and go to state 27
+    LBRAC           reduce using rule 49 (none -> .)
+    NEWLINE         reduce using rule 49 (none -> .)
+    COMMA           reduce using rule 49 (none -> .)
+
+    calc                           shift and go to state 96
+    if                             shift and go to state 2
+    expression                     shift and go to state 3
+    var_assign                     shift and go to state 4
+    data                           shift and go to state 5
+    empty                          shift and go to state 6
+    while                          shift and go to state 7
+    method                         shift and go to state 8
+    output                         shift and go to state 9
+    comment                        shift and go to state 10
+    call                           shift and go to state 15
+    string                         shift and go to state 20
+    tuple                          shift and go to state 21
+    none                           shift and go to state 22
+
+state 96
+
+    (45) elif -> ELIF RBRAC calc LBRAC RBRAC calc . LBRAC
+    (46) elif -> ELIF RBRAC calc LBRAC RBRAC calc . LBRAC elif
+    (1) calc -> calc . NEWLINE calc
+
+    LBRAC           shift and go to state 97
+    NEWLINE         shift and go to state 28
+
+
+state 97
+
+    (45) elif -> ELIF RBRAC calc LBRAC RBRAC calc LBRAC .
+    (46) elif -> ELIF RBRAC calc LBRAC RBRAC calc LBRAC . elif
+    (45) elif -> . ELIF RBRAC calc LBRAC RBRAC calc LBRAC
+    (46) elif -> . ELIF RBRAC calc LBRAC RBRAC calc LBRAC elif
+
+    NEWLINE         reduce using rule 45 (elif -> ELIF RBRAC calc LBRAC RBRAC calc LBRAC .)
+    $end            reduce using rule 45 (elif -> ELIF RBRAC calc LBRAC RBRAC calc LBRAC .)
+    LBRAC           reduce using rule 45 (elif -> ELIF RBRAC calc LBRAC RBRAC calc LBRAC .)
+    ELIF            shift and go to state 91
+
+    elif                           shift and go to state 98
+
+state 98
+
+    (46) elif -> ELIF RBRAC calc LBRAC RBRAC calc LBRAC elif .
+
+    NEWLINE         reduce using rule 46 (elif -> ELIF RBRAC calc LBRAC RBRAC calc LBRAC elif .)
+    $end            reduce using rule 46 (elif -> ELIF RBRAC calc LBRAC RBRAC calc LBRAC elif .)
+    LBRAC           reduce using rule 46 (elif -> ELIF RBRAC calc LBRAC RBRAC calc LBRAC elif .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for PAR in state 45 resolved as shift
+WARNING: shift/reduce conflict for MULTIPLY in state 64 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 64 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 64 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 64 resolved as shift
+WARNING: shift/reduce conflict for MORE in state 64 resolved as shift
+WARNING: shift/reduce conflict for LESS in state 64 resolved as shift
+WARNING: shift/reduce conflict for MOEQ in state 64 resolved as shift
+WARNING: shift/reduce conflict for LEEQ in state 64 resolved as shift
+WARNING: shift/reduce conflict for DEQUALS in state 64 resolved as shift
+WARNING: shift/reduce conflict for COMMA in state 65 resolved as shift
+WARNING: shift/reduce conflict for PAR in state 78 resolved as shift
+WARNING: reduce/reduce conflict in state 3 resolved using rule (calc -> expression)
+WARNING: rejected rule (data -> expression) in state 3
+WARNING: reduce/reduce conflict in state 6 resolved using rule (calc -> empty)
+WARNING: rejected rule (data -> empty) in state 6
+WARNING: reduce/reduce conflict in state 10 resolved using rule (calc -> comment)
+WARNING: rejected rule (empty -> comment) in state 10
+WARNING: reduce/reduce conflict in state 13 resolved using rule (expression -> INT)
+WARNING: rejected rule (data -> INT) in state 13
+WARNING: reduce/reduce conflict in state 14 resolved using rule (expression -> FLOAT)
+WARNING: rejected rule (data -> FLOAT) in state 14
+WARNING: reduce/reduce conflict in state 66 resolved using rule (expression -> INT)
+WARNING: rejected rule (data -> INT) in state 66
+WARNING: reduce/reduce conflict in state 67 resolved using rule (expression -> FLOAT)
+WARNING: rejected rule (data -> FLOAT) in state 67
+WARNING: reduce/reduce conflict in state 74 resolved using rule (var_assign -> NAME EQUALS expression)
+WARNING: rejected rule (data -> expression) in state 74
+WARNING: Rule (data -> INT) is never reduced
+WARNING: Rule (data -> FLOAT) is never reduced
